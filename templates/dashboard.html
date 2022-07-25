@@ -1,0 +1,152 @@
+{% extends 'base.html' %}
+{%block content%}
+
+{%load static%}
+
+{% block css %} 
+    <link href="{% static '/assets/css/dashboard.css' %}" rel="stylesheet">
+{% endblock css %}    
+      
+
+  
+    <nav class="navbar navbar-dark sticky-top bg-light flex-md-nowrap p-0">
+      <a class="navbar-brand col-sm-3 col-md-2 mr-0 h1"  href="#"><span><i class="bi bi-file-earmark-spreadsheet-fill"></i></span>FORMS WORKFLOW</a>
+      <h1 class="h2" style="color:green">Dashboard</h1>
+      <ul class="navbar-nav px-3" style="color:green">
+        
+        <li class="nav-item dropdown pe-3">
+
+          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
+            <img src="{% static '\assets\img\profile.png' %}" alt="Profile" class="rounded-circle" style="color:green;width:30px">
+            <span class="d-none d-md-block dropdown-toggle ps-2" style="color:green">{{user}} </span>
+          </a><!-- End Profile Iamge Icon -->
+
+          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
+            <li class="dropdown-header">
+              <h6>Ben  Munyasya</h6>
+              <span>User (staff)</span>
+            </li>
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
+                <i class="bi bi-person"></i>
+                <span>Profile</span>
+              </a>
+            </li>
+           
+
+           
+            <li>
+              <hr class="dropdown-divider">
+            </li>
+            <li>
+              <a class="dropdown-item d-flex align-items-center" href="#">
+                <i class="bi bi-box-arrow-right"></i>
+                <span>Log Out</span>
+              </a>
+            </li>
+
+          </ul><!-- End Profile Dropdown Items -->
+        </li><!-- End Profile Nav -->
+
+      </ul>
+    </nav>
+
+    <div class="container-fluid">
+      <div class="row">
+        <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+          <div class="sidebar-sticky">
+            <ul class="nav flex-column">
+              <li class="nav-item">
+                <a class="nav-link active" href="#">
+                  <span data-feather="home"></span>
+                  Dashboard <span class="sr-only">(current)</span>
+                </a>
+              </li>
+             
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'access:index'%}" >
+                  <span class="bi bi-file-earmark-break-fill"></span>
+                 Your Applications
+                </a>
+              </li>
+              
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'access:tasks' %}">
+                  <span class="bi bi-list-task"></span>
+                  Tasks <span class="badge badge-secondary badge-pill">{{inbox_count}}</span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'access:tasks' %}">
+                  <span class="bi bi-list-task"></span>
+                  Queues<span class="badge badge-secondary badge-pill">{{queue_count}}</span>
+                </a>
+              </li>
+              
+             
+             
+            </ul>
+
+            <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
+              <span>WORKFLOWS</span>
+              <a class="d-flex align-items-center text-muted" href="#">
+               
+              </a>
+            </h6>
+            <ul class="nav flex-column mb-2">
+              <li class="nav-item">
+                <a class="nav-link" href="{% url 'access:start' %}">
+                    <span class="bi bi-file-break"></span>
+                 RMS Process<span><i class="bi bi-forward-fill"></i></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span class="bi bi-file-break"></span>
+                  Email Process  <span><i class="bi bi-forward-fill"></i></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span class="bi bi-file-break"></span>
+                  HRMIS Process <span><i class="bi bi-forward-fill"></i></span>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="#">
+                    <span class="bi bi-file-break"></span>
+                  Leave Process <span><i class="bi bi-forward-fill"></i></span>
+                </a>
+              </li>
+              
+            </ul>
+          </div>
+        </nav>
+        
+       
+       
+      </div>
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
+    <script src="../../../../assets/js/vendor/popper.min.js"></script>
+    <script src="../../../../dist/js/bootstrap.min.js"></script>
+
+    <!-- Icons -->
+    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
+    <script>
+      feather.replace()
+    </script>
+
+    <!-- Graphs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+    
+{% endblock content %}

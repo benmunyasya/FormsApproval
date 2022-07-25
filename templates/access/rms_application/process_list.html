@@ -1,0 +1,93 @@
+
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+{% load viewflow %}
+{% load static%}
+
+{% block content%}
+{% include 'dashboard.html' %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      
+       
+          <div class="col-lg-12">
+  
+             <!-- Recent Sales -->
+             
+              <div class="card recent-sales overflow-auto">
+
+             
+
+                <div class="card-body">
+                  
+                  
+                  <h5 class="card-title">Forms  </span></h5>
+                  
+                  <table class="table table-borderless datatable">
+                    <thead>
+                      <tr>
+                        <th scope="col">Form Ref/NO</th>
+                        <th scope="col">Application Type</th>
+                        <th scope="col">Request Type</th>
+                        <th scope="col">Approved</th>
+                        
+                        <th scope="col">Status</th>
+                        <th scope="col">Created</th>
+                        <th scope="col">Actions</th>
+
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for process in process_list %}
+                      {% if process.created_by == request.user %}
+                      <tr>
+                        <td>
+                          <a href="{% url 'access:detail' process.pk %}">{{ process.pk }}</a>                        
+                        </td>
+                        <td> {{ view.flow_class }} </td>
+                        <td>{{ process.request_type }}</td>
+                        <td>{{ process.approved|yesno:"Yes,No" }}</td>
+                        <td>
+                          {% if process.finished %}
+                          {{ process.get_drop_status_display }}
+                          {% else %}
+                          {{ process.status }}
+                          {% endif %}
+                        </td>
+                        
+                        <td>
+                          {{ process.created}}
+                        </td>
+                        <td>
+                          view
+                        </td>
+                      </tr>
+                      {% endif %}
+                      {% endfor %}
+                     
+                     
+                     
+                    </tbody>
+                  </table>
+
+                
+               
+                    
+             
+            </div><!-- End Recent Sales -->
+
+          </div>
+  
+         
+        </div>
+   
+  
+
+     
+    </div>
+
+  
+
+    
+  </main>
+{%endblock content%}

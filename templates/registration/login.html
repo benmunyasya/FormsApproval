@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{%block content%}
+
+{%load static%}
+{% block css %} 
+    <link href="{% static '/assets/css/login.css' %}" rel="stylesheet">
+{% endblock css %}  
+<style>
+
+</style>
+<div class="container px-4 py-5 mx-auto">
+    <div class="card card0">
+        <div class="d-flex flex-lg-row flex-column-reverse">
+            
+            <div class="card card2">
+                
+                <div class="my-auto mx-md-5 px-md-5 right">
+                   
+                    <h4 class="text-green" >ACCESS FORMS WORKFLOW.</h4>
+                    <strong class="text-green ">You need to login into your account so as to get access to the forms and
+                         start the process of your request.
+                        If you are an approving authority you will see the  tasks assigned to you after login.</strong>
+                        {% comment %} <span><i class='bi bi-forward-fill heading'></i></span> {% endcomment %}
+                </div>
+            </div>
+            <div class="card card1">
+                <div class="row justify-content-center my-auto">
+                    <div class="col-md-8 col-10 my-5">
+                        <div class="row justify-content-center px-3 mb-3">
+                            <img id="logo" src="{% static '/assets/img/greenkwslogo.png'%}">
+                        </div>
+                       <form class='form' method='post'>
+                   {% csrf_token %}
+                        <h4 class="msg-info">Please login in to your account</h4>
+                   
+                        {% comment %} {% csrf_token %} {% endcomment %}
+                        <div class="form-group">
+                            <label class="form-control-label text-muted"><i class="icon bi bi-person-fill"></i> Username</label>
+                            
+                            <input type="text" id="username" name="username" placeholder="User Name" class="form-control">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-control-label text-muted"><i class="icon bi bi-key-fill"></i>Password</label>
+                            <input type="password" id="password" name="password" placeholder="Password" class="form-control">
+                        </div>
+
+                        <div class="row justify-content-center my-3 px-3">
+                            {% comment %} <a href="{% url 'access:landing' %}"> {% endcomment %}<button class="btn-block btn-color" type='submit'>Login</button>
+                        </div>
+                    </form>
+                    
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+{%endblock content%}

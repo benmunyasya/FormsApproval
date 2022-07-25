@@ -1,0 +1,82 @@
+
+
+{% extends 'base.html' %}
+{%block content%}
+{% load crispy_forms_tags %}
+{% load viewflow %}
+{%load static%}
+{% include 'dashboard.html' %}
+<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+  <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+    
+     
+        <div class="col-lg-12">
+
+           <!-- Recent Sales -->
+           
+            <div class="card recent-sales overflow-auto">
+
+           
+
+              <div class="card-body">
+                
+                
+                <h5 class="card-title">Tasks </span></h5>
+                
+                <table class="table table-borderless datatable">
+                  <thead>
+                    <th scope="col">Task ID</th>
+                   
+                    <th scope="col">Form</th>
+                   
+                        <th scope="col">When Applied</th>
+                        <th scope="col">Request From</th>
+                        <th scope="col">Description</th>
+                  </thead>
+                  <tbody>
+                    {% for task in task_list %}
+                        {% flowurl task user=request.user as task_url %}
+                        <tr>
+                          <td>
+                            {% if task_url %}<a href="{{ task_url }}">{{task.pk}}</a>{% else %}{{ task.process.pk }}/{{ task.pk }}{% endif %}
+                          </td>
+                          
+                          <td>{{ task.process }}</td>
+                          <td>{{ task.created }}</td>
+                          <td>{{ task.process.created_by }}</td>
+                          <td>{{ task.summary|default:task.flow_task }}</td>
+                         
+                        </tr>
+                        {% empty %}
+                        <tr>
+                          <td colspan="4">No tasks assigned</td>
+                        </tr>
+                        {% endfor %}
+                   
+                    
+                   
+                  </tbody>
+                </table>
+
+              
+             
+                  
+           
+          </div><!-- End Recent Sales -->
+
+        </div>
+
+       
+      </div>
+ 
+
+
+   
+  </div>
+
+
+
+  
+</main>
+
+{%endblock content%}
