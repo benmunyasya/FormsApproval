@@ -5,33 +5,23 @@
 {% include 'dashboard.html' %}
 {% load viewflow %}
 
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     <div class="container">
       
               <div class="row">
-                {% include_process_data activation.process %}
-                <div class="col-md-6 order-md-1">
-                  <h6 class="center">
+               
+                <div class="col-md-12 order-md-1">
+                  <strong class="center">
+                   You have been requested by {{activation.process.created_by}} to review and approve the following information:<br>
                     <a href="{% url 'access:detail' activation.process.pk %}">Approval  for  {{activation.process}} <br>Request: {{ activation.process.request_type}} => {{ activation.flow_task }}</a>
-                  </h6> 
-                  <form method="POST">
-                    {% csrf_token %}
-                    <div class="row">
-                      <div class="col -12 ">
-                        {{form|crispy}}
-                        {{ activation.management_form }}
+                  </strong>
+                         
+                        {% include 'rms_form.html' %}
                         
-                      </div>
-                     
-                    </div>
-                    <div class="row">
-                      <div class="col ">
-                        <button type="submit" name="_start" class="btn">Submit</button>
-                        <button type="submit" name="_start" class="btn">Reject With Justification</button>
-                      </div>
-                    </div>
-                  </form>
+                        
+                        
+                    
                 
                  
                 </div>

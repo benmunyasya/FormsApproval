@@ -110,18 +110,20 @@
 }
 
 </style>
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<main id="main" role="main" class="col-md-12 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
       <div class="container">
-        
+        {%if  process.created_by == request.user %}
                 <div class="row">
                  <div class="col-md-12">
                   <div class="tracking">
-                    <div class="title">Tracking your request</div>
+                    <strong class="title">Tracking your request</strong>
                 </div>
                 <div class="progress-track">
                     <ul id="progressbar">
+            
                  {% for task in task_list %}
+
                   {% flowurl task user=request.user as task_url %}
                   {% if task.status == 'DONE' %}
                   <li class="step0 active " id="step1">{{ task.summary|default:task.flow_task  }}</li>
@@ -129,12 +131,12 @@
                   <li class="step0 text-right" id="step4">{{ task.summary|default:task.flow_task }}</li>
                   {% endif %}
                   {% endfor %}
-                    
+                     
                        
                     </ul>
                 </div>
               </div>
-                  <div class="col-md-6 order-md-1">
+                  <div class="col-md-12 order-md-1">
                     <div class="row px-3">
                       <div class="col">
                          
@@ -159,13 +161,13 @@
                         {% flowurl task user=request.user as task_url %}
                         <tr>
                           <td>
-                            {% if task_url %}<a href="{{ task_url}}">{{ task.pk }}</a>{% else %}{{ task.pk }}{% endif %}
+                            {% if task_url %}<a href="{{ task_url}}">{{forloop.counter}}</a>{% else %}{{ task.pk }}{% endif %}
                           </td>
                           <td>{{ task.summary|default:task.flow_task }}</td>
                           <td>{{ task.owner }}</td>
                           <td>{{ task.status }}</td>
                         </tr>
-                        {% endfor %}
+                        {% endfor %} 
                        
                         
                        
@@ -207,7 +209,9 @@
                     {% include_process_data process %}
                   </div>
                 </div> {% endcomment %}
-          
+       
+        
+        {%endif%}  
   
               </div>
      

@@ -1,10 +1,6 @@
 from django.db import models
 
-
 from django.db import models
-
-
-
 
 from django.contrib.auth.models import AbstractUser
 
@@ -17,4 +13,4 @@ class User(AbstractUser):
     is_kwsstaff=models.BooleanField(default=False)
 
     def __str__(self):
-        return f"{self.username} | {self.first_name} {self.last_name}"
+        return f"{self.first_name} {self.last_name}"

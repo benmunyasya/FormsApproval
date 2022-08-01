@@ -9,51 +9,42 @@
       
 
   
-    <nav class="navbar navbar-dark sticky-top bg-light flex-md-nowrap p-0">
-      <a class="navbar-brand col-sm-3 col-md-2 mr-0 h1"  href="#"><span><i class="bi bi-file-earmark-spreadsheet-fill"></i></span>FORMS WORKFLOW</a>
-      <h1 class="h2" style="color:green">Dashboard</h1>
-      <ul class="navbar-nav px-3" style="color:green">
-        
+  <!-- ======= Header ======= -->
+  <header id="header" class="header fixed-top d-flex align-items-center">
+
+    <div class="d-flex align-items-center justify-content-between">
+      <a href="#" class="logo d-flex align-items-center">
+        <img src="{% static '\assets\img\greenkwslogo.png' %}" alt="">
+        <span class="d-none d-lg-block">WorkFlow</span>
+      </a>
+   
+    </div><!-- End Logo -->
+
+    
+
+    <nav class="header-nav ms-auto">
+      <ul class="d-flex align-items-center">
+
+      
+       
+       
+       
+
         <li class="nav-item dropdown pe-3">
 
-          <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-            <img src="{% static '\assets\img\profile.png' %}" alt="Profile" class="rounded-circle" style="color:green;width:30px">
-            <span class="d-none d-md-block dropdown-toggle ps-2" style="color:green">{{user}} </span>
-          </a><!-- End Profile Iamge Icon -->
+         <div class="nav-link nav-profile d-flex align-items-center pe-0">
+            <img src="{% static '\assets\img\profile.png' %}" alt="Profile" class="rounded-circle">
+            <span class="d-none d-md-block ps-2">{{request.user}}|</span>
 
-          <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
-            <li class="dropdown-header">
-              <h6>Ben  Munyasya</h6>
-              <span>User (staff)</span>
-            </li>
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="users-profile.html">
-                <i class="bi bi-person"></i>
-                <span>Profile</span>
-              </a>
-            </li>
-           
-
-           
-            <li>
-              <hr class="dropdown-divider">
-            </li>
-            <li>
-              <a class="dropdown-item d-flex align-items-center" href="#">
-                <i class="bi bi-box-arrow-right"></i>
-                <span>Log Out</span>
-              </a>
-            </li>
-
-          </ul><!-- End Profile Dropdown Items -->
+            <a  href="{% url 'logout' %}" >LOG OUT</a><!-- End Profile Iamge Icon -->
+         </div>
+         
         </li><!-- End Profile Nav -->
 
       </ul>
-    </nav>
+    </nav><!-- End Icons Navigation -->
+
+  </header><!-- End Header -->
 
     <div class="container-fluid">
       <div class="row">
@@ -62,7 +53,7 @@
             <ul class="nav flex-column">
               <li class="nav-item">
                 <a class="nav-link active" href="#">
-                  <span data-feather="home"></span>
+                  <span data-feather="home"> <i class="bi bi-grid"></i></span>
                   Dashboard <span class="sr-only">(current)</span>
                 </a>
               </li>
@@ -77,15 +68,10 @@
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'access:tasks' %}">
                   <span class="bi bi-list-task"></span>
-                  Tasks <span class="badge badge-secondary badge-pill">{{inbox_count}}</span>
+                  Requests <span class="badge badge-secondary badge-pill">{{inbox_count}}</span>
                 </a>
               </li>
-              <li class="nav-item">
-                <a class="nav-link" href="{% url 'access:tasks' %}">
-                  <span class="bi bi-list-task"></span>
-                  Queues<span class="badge badge-secondary badge-pill">{{queue_count}}</span>
-                </a>
-              </li>
+              
               
              
              
@@ -99,27 +85,27 @@
             </h6>
             <ul class="nav flex-column mb-2">
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'access:start' %}">
+                <a class="nav-link" href="{% url 'access:rms_start' %}">
                     <span class="bi bi-file-break"></span>
-                 RMS Process<span><i class="bi bi-forward-fill"></i></span>
+                 RMS WORKFLOW
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span class="bi bi-file-break"></span>
-                  Email Process  <span><i class="bi bi-forward-fill"></i></span>
+                  Email WORKFLOW  
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span class="bi bi-file-break"></span>
-                  HRMIS Process <span><i class="bi bi-forward-fill"></i></span>
+                  HRMIS WORKFLOW 
                 </a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#">
                     <span class="bi bi-file-break"></span>
-                  Leave Process <span><i class="bi bi-forward-fill"></i></span>
+                   USER SUNSYSTEM 
                 </a>
               </li>
               
@@ -132,21 +118,8 @@
       </div>
     </div>
 
-    <!-- Bootstrap core JavaScript
-    ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
-    <script>window.jQuery || document.write('<script src="../../../../assets/js/vendor/jquery-slim.min.js"><\/script>')</script>
-    <script src="../../../../assets/js/vendor/popper.min.js"></script>
-    <script src="../../../../dist/js/bootstrap.min.js"></script>
+   
 
-    <!-- Icons -->
-    <script src="https://unpkg.com/feather-icons/dist/feather.min.js"></script>
-    <script>
-      feather.replace()
-    </script>
-
-    <!-- Graphs -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.7.1/Chart.min.js"></script>
+  
     
 {% endblock content %}

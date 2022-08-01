@@ -6,7 +6,7 @@
 {% load viewflow %}
 {%load static%}
 {% include 'dashboard.html' %}
-<main role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+<main id="main" role="main" class="col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
   <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
     
      
@@ -21,15 +21,15 @@
               <div class="card-body">
                 
                 
-                <h5 class="card-title">Tasks </span></h5>
+                <h5 class="card-title">Requests </span></h5>
                 
                 <table class="table table-borderless datatable">
                   <thead>
-                    <th scope="col">Task ID</th>
+                    <th scope="col">Request No</th>
                    
                     <th scope="col">Form</th>
                    
-                        <th scope="col">When Applied</th>
+                        <th scope="col">Submitted On</th>
                         <th scope="col">Request From</th>
                         <th scope="col">Description</th>
                   </thead>
@@ -38,7 +38,7 @@
                         {% flowurl task user=request.user as task_url %}
                         <tr>
                           <td>
-                            {% if task_url %}<a href="{{ task_url }}">{{task.pk}}</a>{% else %}{{ task.process.pk }}/{{ task.pk }}{% endif %}
+                            {% if task_url %}<a href="{{ task_url }}">{{forloop.counter}}</a>{% else %}{{ task.process.pk }}/{{ task.pk }}{% endif %}
                           </td>
                           
                           <td>{{ task.process }}</td>

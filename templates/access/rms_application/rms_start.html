@@ -1,0 +1,356 @@
+{% extends 'base.html' %}
+{%block content%}
+{% load crispy_forms_tags %}
+{% load viewflow %}
+{%load static%}
+
+{% include 'dashboard.html' %}
+<style>
+  .card1 {
+    width:50%;
+    
+}
+
+.card2 {
+    width:50%;
+   
+}
+</style>
+<main id="main" role="main" class="main col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+
+
+
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title ">REVENUE MANAGEMENT SYSTEM ACCOUNT REQUISITION FORM</h5>
+                <p class='strong'>NOTE: For instructions on completing this form; as well as, user requirements, please see down below.
+
+                  </p>
+               
+                
+                <form method='POST'class="row g-3">
+                  {%csrf_token%}
+
+                  <!--RMS GENERAL INFORMATION FORM-->
+                <div class="card col-12">
+                  <div class="card-body">
+                    <h5 class="card-title">SECTION I: General Information</h5>
+                  
+                    <div class="col-md-12">
+
+                      {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
+                      {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.request_type|as_crispy_field}}
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label"> Last  Name</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.last|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label"> First  Name</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.first|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label"> Middle  Name</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.middle|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.salutation|as_crispy_field}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+
+                      {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
+                      {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.user_type|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+  
+                      {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
+                      {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.temporary_staff|as_crispy_field}}
+                    </div>
+  
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label">Est No.</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.est_no|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputEmail5" class="form-label">Email</label>
+                      <input type="email" class="form-control" id="inputEmail5"> {% endcomment %}
+                      {{form.email|as_crispy_field}}
+                    </div>
+                  </div>
+                  <div  class="row">
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label">Mobile No.</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.mobile_no|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label"> Company  Name</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.company_name|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label"> Job Title</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.job_title|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label"> Department</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.department|as_crispy_field}}
+                    </div>
+                  </div>
+                  <div class="row">
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputName5" class="form-label"> Station</label>
+                      <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                      {{form.station|as_crispy_field}}
+                    </div>
+  
+  
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputCity" class="form-label">Section</label>
+                      <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                      {{form.section|as_crispy_field}}
+                    </div>
+  
+                    <div class="col-md-3">
+                      {% comment %} <label for="inputZip" class="form-label">Area</label>
+                      <input type="text" class="form-control" id="inputZip"> {% endcomment %}
+                      {{form.area|as_crispy_field}}
+                    </div>
+                    <div class="col-md-3" >
+                      {% comment %} <label for="inputZip" class="form-label">Date</label>
+                      <input type="text" class="form-control" id="inputZip"> {% endcomment %}
+                      {{form.date|as_crispy_field}}
+                      
+                    </div>
+                  </div>
+                 
+                  
+                 
+      
+                    
+                  </div>
+                </div>
+                
+                  <hr>
+                
+                  
+                  <div class="card col-12">
+                    <div class="card-body">
+                      <h5 class="card-title">SECTION II: ACCESS & GROUP SELECTION</h5>
+                      
+                      <!-- Bordered Table -->
+                      <table class="table table-bordered">
+                        {% comment %} <thead>
+                          <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Position</th>
+                            <th scope="col">Age</th>
+                            <th scope="col">Start Date</th>
+                          </tr>
+                        </thead> {% endcomment %}
+                        <tbody>
+                          <tr>
+                           
+                            <td>
+                              {% comment %} <label for="inputZip" class="form-label">Area</label>
+                              <input type="text" class="form-control" id="inputZip"> {% endcomment %}
+                              {{form.ICT|as_crispy_field}}
+                            </td>
+                            <td>{{form.FINANCE|as_crispy_field}}</td>
+                            <td> {{form.CUSTOMER_SERVICE|as_crispy_field}}</td>
+                           
+                            <td> {{form.MARKETING|as_crispy_field}}</td>
+                            <td> {{form.PARKS_AND_RESERVES|as_crispy_field}}</td>
+                            <td> {{form.REVENUE_PROTECTION_UNIT|as_crispy_field}}</td>
+                            <td> {{form.INTERNAL_AUDIT|as_crispy_field}}</td>
+                          </tr>
+                        
+                        </tbody>
+                      </table>
+                      <!-- End Bordered Table -->
+        
+                      
+                    </div>
+                  </div>
+                  <div class="card col-12">
+                    <div class="card-body">
+                      <h5 class="card-title">SECTION III: USER ACCOUNT REQUEST</h5>
+                      <p class='strong'>By signing below you acknowledge that you have read and understood the Revenue Management System Security Agreement
+                        below.
+                        </p>
+                      <div class="row">
+                        <div class="col-md-4">
+                          {% comment %} <label for="inputCity" class="form-label">Section</label>
+                          <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                          {{form.Full_Name|as_crispy_field}}
+                        </div>
+                        <div class="col-md-4">
+                          {% comment %} <label for="inputCity" class="form-label">Section</label>
+                          <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                          {{form.Signature|as_crispy_field}}
+                        </div>
+                        <div class="col-md-4">
+                          {% comment %} <label for="inputCity" class="form-label">Section</label>
+                          <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                          {{form.Date|as_crispy_field}}
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card col-12">
+                    <div class="card-body">
+                      <h5 class="card-title ">Revenue Management User Security Agreement</h5>
+                      <p class='strong'>This form is to request access to the Revenue Management System</p>
+                    <div class="d-flex flex-lg-row flex-column-reverse">
+                      <div class="card card2">
+                
+                        <div class="card-body">
+                          <h3 class="card-title ">Instructions</h3>
+                            <h4 class="text-green" >Section I: General User Information</h4>
+                            <p class="text-green ">A. In order to allow access to the Revenue Management System
+                              the form must be completed<br>
+                              B. Provide full information and sign. Mobile phone will be included in the
+                              Revenue Management System as part of your contact information.<br>
+                              C. Email address is required. Please provide an official email
+                              address.</p><br><br>
+                            <h4 class="text-green" >Section II: Access and Group Selection</h4>
+                            <p class="text-green ">A. Select user access by choosing one of the levels of permission<br>
+                              B. Select the Division/Department/Park/Station which you
+                              are deployed<br>
+                              C. Forms with invalid permission request will be rejected.</p><br><br>
+
+                            <h4 class="text-green" >Section III: User Account Request</h4>
+                            <p class="text-green ">A. Print your name and date acknowledging that you have read,
+                              understand RMS Security Agreement and will comply with RMS
+                              security requirements. Enter your email address in the Signature
+                              block to sign the form electronically.<br>
+                              B. Attach the document and send via e-mail or forward to your
+                              Department Head Requestor for approval.
+                              </p><br><br>
+                                {% comment %} <span><i class='bi bi-forward-fill heading'></i></span> {% endcomment %}
+                        </div>
+                    </div>
+                    <div class="card card1">
+                      <div class="card-body">
+                        
+                          <h4 class="text-green" >Section IV: DEPARTMENT HEAD Authorization</h4>
+                          <p class="text-green ">A. Verify completion and accuracy of user information and that user
+                            has a legitimate “need to know” and sufficient authorization. Enter
+                            your email address in the Signature block to sign the form
+                            electronically.<br>
+                            B. Approve, date, and provide your telephone number</p><br><br>
+                          <h4 class="text-green" >Section V: ICT APPROVING
+                            AUTHORITY/DATA OWNER</h4>
+                          <p class="text-green ">A. Verify user information request authorization.<br>
+                            B. Print your name and enter your e-mail address in the Signature
+                            block to sign the form electronically. Approve/deny request and
+                            provide the date of approval.<br>
+                            C. Submit approve/deny decision with user request form: attach the
+                            document and send via e-mail or forward to KWS ICT Help
+                            Desk.
+                            
+                            </p><br><br>
+                            <strong>*To check a box or fill a field electronically double
+                              click on the appropriate Box and select checked on
+                              the default value</strong>
+                              {% comment %} <span><i class='bi bi-forward-fill heading'></i></span> {% endcomment %}
+                      </div>
+                       
+                    </div>
+                    
+                     </div>    
+                     
+                     <div class="card  ">
+                      <h5 class="card-title "></h5>
+                      <div class="card-body">
+                        <h6 class="card-title ">As a condition of being granted access to the Revenue Management System, I agree to comply with the following security requirements:</h6>
+                          
+                          <p class="text-green ">• I agree that I have a current security clearance and approvals.<br>
+                            • I will comply with KWS policies, regulations, and guidelines regarding the protection, handling, processing, transmission,
+                            distribution, and destruction of sensitive, unclassified “For Official Use Only” information.<br>
+                            • I will protect information from unauthorized access, disclosure, misuse, damage, and/or theft.<br>
+                            • I will comply with all policies and procedures governing the secure operation and authorized use the system.<br>
+                            • I will protect all passwords issued to me, and will not disclose them. I understand that sharing or the use of another user’s ID/
+                            password is prohibited. I will change my password when required and when I suspect that it has been compromised.<br>
+                            • I will report all security incidents including suspected password compromises to the ICT Help Desk.<br>
+                            • I will immediately notify the ICT Help Desk when I no longer need access to the system (including but not limited to; change in job
+                            duties, transfer, project completion, end of contract, retirement, etc.).<br>
+                            • I will use the Revenue Management system for official related and authorized work only.<br>
+                            • I will not knowingly introduce malicious code, nor will I attempt to bypass or circumvent security features.<br>
+                            • I understand that all information is subject to Audits and is NOT subject to any expectation of privacy.<br>
+                            • Unauthorized access is prohibited and could result in the loss of access and/or civil or criminal action</p><br><br>
+                          
+                            <fieldset class="row mb-3">
+                              <legend class="col-form-label col-sm-2 pt-0">If you have read :</legend>
+                              <div class="col-sm-10">
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                  <label class="form-check-label" for="gridRadios1">
+                                   I agree
+                                  </label>
+                                </div>
+                                <div class="form-check">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                  <label class="form-check-label" for="gridRadios2">
+                                   I do not  agree
+                                  </label>
+                                </div>
+                               
+                              </div>
+                            </fieldset>
+                              {% comment %} <span><i class='bi bi-forward-fill heading'></i></span> {% endcomment %}
+                      </div>
+                      
+                    </div> 
+              
+                      
+                    </div>
+                  </div>
+                  {{ activation.management_form}}
+                  <div class="col-12 d-flex justify-content-between text-center m-3 ">
+                    <button type="reset" class="btn btn-secondary btn-color">Reset</button>
+                    <button type="submit" name="_start" class="btn btn-primary btn-color">Start RMS workflow</button>
+
+                  </div>
+                </form>
+                
+        
+              
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </section>
+
+
+
+    </div>
+
+
+
+
+  </main>
+  
+{%endblock content%}

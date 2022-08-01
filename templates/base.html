@@ -47,9 +47,9 @@
 
 {%endblock content%}
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 <script src="{% static '/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
-<script src="{% static '/assets/vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+
 
 <script src="{% static '/assets/vendor/tinymce/tinymce.min.js' %}"></script>
 
@@ -57,17 +57,7 @@
   
   <script src="{% static '/assets/vendor/simple-datatables/simple-datatables.js' %}"></script> 
   <script src="{% static '/assets/vendor/fontawesome-free/js/all.min.js' %}"></script> 
-  
-  <script>
-    $(function () {
-      $("#datetimepicker1").datetimepicker({
-        format: 'DD/MM/YYYY HH:mm',
-      });
-    });
-  </script>
- 
-  <!-- Template Main JS File -->
-  <script src="{% static '/assets/js/main.js' %}"></script>
+<script src="{% static '/assets/js/main.js' %}"></script>
 </body>
 </html>
 <!---->
