@@ -21,7 +21,7 @@
                 <div class="card-body">
                   
                   
-                  <h5 class="card-title">Forms  </span></h5>
+                  <h5 class="card-title">Request Forms  Submitted</span></h5>
                   
                   <table class="table table-borderless datatable">
                     <thead>
@@ -29,11 +29,11 @@
                         <th scope="col">Form Ref/NO</th>
                         <th scope="col">Application Type</th>
                         <th scope="col">Request Type</th>
-                        <th scope="col">Approved</th>
+                        <th scope="col">Pending Approval</th>
                         
-                        <th scope="col">Status</th>
-                        <th scope="col">Created</th>
-                        <th scope="col">Actions</th>
+                        <th scope="col">Submitted on</th>
+                        <th scope="col">Finished on</th>
+                       
 
                       </tr>
                     </thead>
@@ -46,20 +46,14 @@
                         </td>
                         <td> {{ view.flow_class }} </td>
                         <td>{{ process.request_type }}</td>
-                        <td>{{ process.approved|yesno:"Yes,No" }}</td>
-                        <td>
-                          {% if process.finished %}
-                          {{ process.get_drop_status_display }}
-                          {% else %}
-                          {{ process.status }}
-                          {% endif %}
-                        </td>
+                        <td>{{ process.active_tasks.count }}</td>
+                        
                         
                         <td>
-                          {{ process.created}}
+                          {{ process.summary}}
                         </td>
                         <td>
-                          view
+                          {{ process.finished}}
                         </td>
                       </tr>
                       {% endif %}
@@ -89,5 +83,5 @@
   
 
     
-  </main>
+</main>
 {%endblock content%}

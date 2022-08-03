@@ -16,7 +16,8 @@ class RMSForm(forms.ModelForm):
          'HOD_name', 'HOD_approve', 'HOD_email',
          'ICT_Authority_name', 'ICT_Approve','ICTAuthority_email']
         widgets = {
-            'date': forms.DateInput(),
+            'date': DateInput(),
+            'Date':DateInput(),
             'user_type':forms.RadioSelect(),
             'temporary_staff':forms.RadioSelect(),
             'REVENUE_PROTECTION_UNIT':forms.RadioSelect(),

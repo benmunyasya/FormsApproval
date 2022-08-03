@@ -17,7 +17,7 @@ from multiselectfield import MultiSelectField
 
 ACCESS_AND_MULTIPLE_GROUP_SELECTION_CHOICES=((('Systems Administrator','Senior Management')),(('Finance Mananger','Finance Excutive')))
 REQUEST_TYPE_CHOICES=(('New User Account', 'New User Account'), ('Modify Access Permission', 'Modify Access Permission'), ('Update Contact Information', 'Update Contact Information'))
-
+DEPARTMENTS=(('ICT', 'ICT'), ('Communication', 'Communication'), ('Finance', 'Finance'),('Community', 'Community'))
 
 class RMSGeneralInformationProcess(Process):
     applicant=models.ForeignKey(User,on_delete=models.CASCADE,default=1)
@@ -37,7 +37,7 @@ class RMSGeneralInformationProcess(Process):
     mobile_no = models.CharField(max_length=30)
     company_name = models.CharField(max_length=30)
     job_title=models.CharField(max_length=30)
-    department=models.CharField(max_length=30)
+    department=models.CharField(max_length=30,choices=DEPARTMENTS)
     station=models.CharField(max_length=30)
     section=models.CharField(max_length=30)
     area=models.CharField(max_length=30,default='SOUTHERN')
@@ -56,19 +56,19 @@ class RMSGeneralInformationProcess(Process):
     
     ## USER ACCOUNT REQUEST
     Full_Name=models.CharField(max_length=100)
-    Signature=models.EmailField(help_text='Enter Your email to digitally sign')
+    Signature=models.EmailField(help_text='Enter Your email to digitally sign . i.e ben@kws.go.ke')
     Date = models.DateField()
     #ict verification
     ICT_Authority_name = models.CharField(max_length=30,null=True,blank=True)
     ICT_Approve=models.BooleanField(default=False,null=True,blank=True)
     date_approved_by_ict=models.DateField(auto_now=True,null=True)
-    ICTAuthority_email = models.EmailField(null=True,blank=True,help_text='Enter Your email to digitally sign')
+    ICTAuthority_email = models.EmailField(null=True,blank=True,help_text='Enter Your email to digitally sign . i.e ben@kws.go.ke')
     
     #Head department verification
-    HOD_name = models.CharField(max_length=30,null=True,blank=True)
+    HOD_name = models.CharField(max_length=50,null=True,blank=True)
     HOD_approve=models.BooleanField(default=False,null=True,blank=True)
     date_approved_by_department_head=models.DateField(auto_now=True,null=True,blank=True)
-    HOD_email = models.EmailField(null=True,blank=True,help_text='Enter Your email to digitally sign')
-
+    HOD_email = models.EmailField(null=True,blank=True,help_text='Enter Your email to digitally sign . i.e ben@kws.go.ke')
+    
     
    

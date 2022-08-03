@@ -1,3 +1,4 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 
 # Create your views here.
@@ -8,6 +9,9 @@ def landing(request):
 @login_required(login_url='/accounts/login/')
 def dashboard(request):
     user=request.user
-    
-    context={'user':user}
-    return render(request,'dashboard.html',context)
+    if user.is_kwsstaff:
+
+         
+         return HttpResponseRedirect('/request_forms/')
+    else:
+        return HttpResponseRedirect('/request_forms/tasks/')

@@ -7,5 +7,6 @@ def tasks_counts(request):
         return {
             'inbox_count': Task.objects.inbox([RMS_ApplicationFlow], request.user).count(),
             'queue_count': Task.objects.queue([RMS_ApplicationFlow], request.user).count()
-        }
+           
+    }
     return {}

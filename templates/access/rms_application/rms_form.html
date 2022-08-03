@@ -218,6 +218,7 @@
             </div>
           </div>
         </div>
+      
         <div class="card col-12">
           <div class="card-body">
             <h5 class="card-title">SECTION IV: ICT AUTHORIZATION</h5>
@@ -246,12 +247,13 @@
           </div>
         </div>
        
-        {{ activation.management_form}}
+              
         <div class="col-12 d-flex justify-content-between text-center m-3 ">
           <button type="reset" class="btn btn-secondary btn-color">Reset</button>
-          <button type="submit" name="" class="btn btn-primary btn-color">Submit</button>
+          <button type="submit" name="_continue" class="btn btn-primary btn-color">Submit and go to next request</button>
 
         </div>
+        {{ activation.management_form}}
       </form>
       
 

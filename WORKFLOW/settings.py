@@ -78,9 +78,14 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'WORKFLOW.wsgi.application'
+# WSGI_APPLICATION = 'WORKFLOW.wsgi.application'
 
-
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_USE_TLS = True
+# EMAIL_PORT = 587
+# EMAIL_HOST_USER ='Ben Desh'
+# EMAIL_HOST_PASSWORD = '074143ben'
 # Database
 # https://docs.djangoproject.com/en/4.0/ref/settings/#databases
 DATABASES = {
