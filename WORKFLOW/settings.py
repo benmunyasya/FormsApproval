@@ -41,6 +41,9 @@ INSTALLED_APPS = [
     'access',
     'viewflow',
     'crispy_forms',
+     'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
   
 ]
 
@@ -100,6 +103,10 @@ DATABASES = {
    }
 }
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
 
 # Password validation
 # https://docs.djangoproject.com/en/4.0/ref/settings/#auth-password-validators
