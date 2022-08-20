@@ -32,7 +32,7 @@
                   </p>
                
                 
-                <form method='POST'class="row g-3" onsubmit="return validateMyForm()">
+                <form method='POST'class="row g-3" id='rmsStart' onsubmit="return validateMyForm()">
                   {%csrf_token%}
 
                   <!--RMS GENERAL INFORMATION FORM-->
@@ -303,13 +303,13 @@
                               <legend class="col-form-label col-sm-2 pt-0">If you have read :</legend>
                               <div class="col-sm-10">
                                 <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="option1" checked>
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios1" value="agree">
                                   <label class="form-check-label" for="gridRadios1">
                                    I agree
                                   </label>
                                 </div>
                                 <div class="form-check">
-                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="option2">
+                                  <input class="form-check-input" type="radio" name="gridRadios" id="gridRadios2" value="notAgree">
                                   <label class="form-check-label" for="gridRadios2">
                                    I do not  agree
                                   </label>
@@ -328,7 +328,7 @@
                   {{ activation.management_form}}
                   <div class="col-12 d-flex justify-content-between text-center m-3 ">
                     <button type="reset" class="btn btn-secondary btn-color">Reset</button>
-                    <button type="submit" name="_start" class="btn btn-primary btn-color">Start RMS workflow</button>
+                    <button type="submit" name="_start" class="btn btn-primary btn-color"  id="submitbtn">Start RMS workflow</button>
 
                   </div>
                 </form>
@@ -352,5 +352,29 @@
 
 
   </main>
-  
+  <script>
+  const btn = document.querySelector('#submitbtn');        
+  const radioButtons = document.querySelectorAll('input[name="gridRadios"]');
+  btn.addEventListener("click", () => {
+  const form  = document.getElementById('rmsStart');
+      for (const radioButton of radioButtons) {
+          if (radioButton.checked) {
+              if (radioButton.value == 'notAgree'){
+                alert('YOU HAVE TO AGREE FIRST')
+                
+
+                form.addEventListener('submit', (event) => {
+                // handle the form data
+                event.preventDefault();
+                 });
+              }else if(radioButton.value == 'agree'){
+                confirm('Are you sure you want to submit your general info as it is.')
+              }
+              break;
+          }
+      }
+      
+      
+  }); 
+</script>
 {%endblock content%}

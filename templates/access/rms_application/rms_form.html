@@ -14,7 +14,7 @@
       <div class="card col-12">
         <div class="card-body">
           <h5 class="card-title">SECTION I: General Information</h5>
-        
+          
           <div class="col-md-12">
 
             {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
@@ -85,39 +85,34 @@
             {{form.job_title|as_crispy_field}}
           </div>
           <div class="col-md-3">
-            {% comment %} <label for="inputName5" class="form-label"> Department</label>
-            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+
             {{form.department|as_crispy_field}}
           </div>
         </div>
         <div class="row">
           <div class="col-md-3">
-            {% comment %} <label for="inputName5" class="form-label"> Station</label>
-            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+           
             {{form.station|as_crispy_field}}
           </div>
 
 
           <div class="col-md-3">
-            {% comment %} <label for="inputCity" class="form-label">Section</label>
-            <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+            
             {{form.section|as_crispy_field}}
           </div>
 
           <div class="col-md-3">
-            {% comment %} <label for="inputZip" class="form-label">Area</label>
-            <input type="text" class="form-control" id="inputZip"> {% endcomment %}
+           
             {{form.area|as_crispy_field}}
           </div>
           <div class="col-md-3" >
-            {% comment %} <label for="inputZip" class="form-label">Date</label>
-            <input type="text" class="form-control" id="inputZip"> {% endcomment %}
+           
             {{form.date|as_crispy_field}}
             
           </div>
         </div>
        
-        
+      </fieldset>
        
 
           
@@ -130,7 +125,11 @@
         <div class="card col-12">
           <div class="card-body">
             <h5 class="card-title">SECTION II: ACCESS & GROUP SELECTION</h5>
-            
+           {% if request.user.is_ICT_Authority %} 
+           <fieldset>
+            {%else%}
+            <fieldset disabled ='disabled' onsubmit="myFunction()">
+           {%endif%}
             <!-- Bordered Table -->
             <table class="table table-bordered">
               {% comment %} <thead>
@@ -161,6 +160,7 @@
               
               </tbody>
             </table>
+          </fieldset>
             <!-- End Bordered Table -->
 
             
@@ -172,23 +172,23 @@
             <p class='strong'>By signing below you acknowledge that you have read and understood the Revenue Management System Security Agreement
               below.
               </p>
+           
             <div class="row">
+             
               <div class="col-md-4">
-                {% comment %} <label for="inputCity" class="form-label">Section</label>
-                <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                
                 {{form.Full_Name|as_crispy_field}}
               </div>
               <div class="col-md-4">
-                {% comment %} <label for="inputCity" class="form-label">Section</label>
-                <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                
                 {{form.Signature|as_crispy_field}}
               </div>
               <div class="col-md-4">
-                {% comment %} <label for="inputCity" class="form-label">Section</label>
-                <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                
                 {{form.Date|as_crispy_field}}
               </div>
             </div>
+         
           </div>
         </div>
         <div class="card col-12">
@@ -200,22 +200,24 @@
               </p>
             <div class="row">
               <div class="col-md-4">
-                {% comment %} <label for="inputCity" class="form-label">Section</label>
-                <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                
                 {{form.HOD_name|as_crispy_field}}
               </div>
               <div class="col-md-4">
-                {% comment %} <label for="inputCity" class="form-label">Section</label>
-                <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                
                 {{form.HOD_approve|as_crispy_field}}
               </div>
              
               <div class="col-md-4" >
-                {% comment %} <label for="inputCity" class="form-label">Section</label>
-                <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                
                 {{form.HOD_email|as_crispy_field}}
               </div>
             </div>
+            <div class="row" id='hod_rejection_comments'>
+              <div class="col-md-12">
+                {{form.HOD_Remarks|as_crispy_field}}
+              </div>
+        </div>
           </div>
         </div>
       
@@ -228,35 +230,55 @@
               </p>
             <div class="row">
               <div class="col-md-4">
-                {% comment %} <label for="inputCity" class="form-label">Section</label>
-                <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                
                 {{form.ICT_Authority_name|as_crispy_field}}
               </div>
-              <div class="col-md-4">
-                {% comment %} <label for="inputCity" class="form-label">Section</label>
-                <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+              <div class="col-md-4" 
+              >
+              
                 {{form.ICT_Approve|as_crispy_field}}
               </div>
               
               <div class="col-md-4">
-                {% comment %} <label for="inputCity" class="form-label">Section</label>
-                <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                
                 {{form.ICTAuthority_email|as_crispy_field}}
               </div>
+            </div>
+            <div class="row" id='ict_rejection_comments'>
+                  <div class="col-md-12">
+                    {{form.ICT_Remarks|as_crispy_field}}
+                  </div>
             </div>
           </div>
         </div>
        
-              
+        {{ activation.management_form}}
         <div class="col-12 d-flex justify-content-between text-center m-3 ">
           <button type="reset" class="btn btn-secondary btn-color">Reset</button>
           <button type="submit" name="_continue" class="btn btn-primary btn-color">Submit and go to next request</button>
 
         </div>
-        {{ activation.management_form}}
+        
       </form>
       
 
     
     </div>
   </div>
+<script>
+  function commentarea(){
+    const  hod_approve=document.getElementById('id_HOD_approve').value
+    const  ict_approve=document.getElementById('div_id_ICT_Approve').value
+    if(hod_approve=='true'){
+      const comments=document.getElementById('hod_rejection_comments').style.display='None'
+    }
+    if(ict_approve=='true'){
+      const comments=document.getElementById('ict_rejection_comments').style.display='None'
+    }
+  }
+var f = document.forms['myFormNAME'];
+for(var i=0,fLen=f.length;i<fLen;i++){
+  f.elements[i].readOnly = true;//As @oldergod noted, the "O" must be upper case
+}
+
+</script>

@@ -26,13 +26,14 @@
                   <table class="table table-borderless datatable">
                     <thead>
                       <tr>
-                        <th scope="col">Form Ref/NO</th>
+                        <th scope="col">#</th>
                         <th scope="col">Application Type</th>
                         <th scope="col">Request Type</th>
                         <th scope="col">Pending Approval</th>
                         
-                        <th scope="col">Submitted on</th>
+                        
                         <th scope="col">Finished on</th>
+                        <th scope="col">Completely Approved</th>
                        
 
                       </tr>
@@ -48,13 +49,18 @@
                         <td>{{ process.request_type }}</td>
                         <td>{{ process.active_tasks.count }}</td>
                         
-                        
                         <td>
-                          {{ process.summary}}
-                        </td>
+                          {%if process.finished == None %}
+                            Not Done
+                          {%else%}
+                          <span class="badge badge-success">{{ process.finished}}</span>
+                          {% endif %}
+                        </td> 
+
                         <td>
-                          {{ process.finished}}
+                          {{ process.fully_approved}}
                         </td>
+                       
                       </tr>
                       {% endif %}
                       {% endfor %}

@@ -14,7 +14,7 @@
 
     <div class="d-flex align-items-center justify-content-between">
       <a href="{% url 'access:dashboard' %}" class="logo d-flex align-items-center">
-        <img src="{% static '\assets\img\greenkwslogo.png' %}" alt="">
+        <img  src="{% static '\assets\img\greenkwslogo (2).png'%}" alt="">
         <span class="d-none d-lg-block">WorkFlow</span>
       </a>
    
@@ -62,14 +62,14 @@
               
               <li class="nav-item">
                 <a class="nav-link" href="{% url 'access:tasks' %}">
-                  <span class="bi bi-list-task"></span>
+                  <span class="bi bi-bell"></span>
                   Notifications<span class="badge badge-secondary badge-pill">{{inbox_count}}</span>
                 </a>
               </li>
               <li class="nav-item">
-                <a class="nav-link" href="{% url 'access:tasks' %}">
+                <a class="nav-link" href="{% url 'access:queue' %}">
                   <span class="bi bi-list-task"></span>
-                  Queues<span class="badge badge-secondary badge-pill">{{inbox_count}}</span>
+                  Queues<span class="badge badge-secondary badge-pill">{{queue_count}}</span>
                 </a>
               </li>
               {%else%}

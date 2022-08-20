@@ -43,7 +43,7 @@ class RMS_ApplicationFlow(Flow):
         UpdateProcessView,
         task_title="Department Head AUTHORIZATION",
         form_class=RMSForm,
-        success_url=HttpResponseRedirect('/request_forms/tasks/'),
+        
        
        
      
@@ -66,18 +66,22 @@ class RMS_ApplicationFlow(Flow):
     )
     approve_by_ICT = flow.View(
         UpdateProcessView,
-        task_title=": ICT APPROVING AUTHORITY/DATA OWNER",
+       # ICT_Authority_name = forms.CharField(widget=forms.TextInput(attrs={'readonly':'True'}))
+        task_title="ICT APPROVING AUTHORITY/DATA OWNER",
         form_class=RMSForm,
-        
+        success_url = '/request_form/tasks',
+       
        # fields=['ICT_Authority_name', 'ICT_Approve','ICTAuthority_email'],
        
         task_result_summary="Request is {{ process.ICT_Approve|yesno:'Approved,Rejected' }} by ICT Authority ",
         
     ).Assign(
         lambda act: User.objects.get(is_ICT_Authority=True)
-        ).Next(this.confirmed)
-    confirmed = (
+        ).Next(this.system_verify)
+    system_verify = (
         flow.If(lambda activation: activation.process.ICT_Approve)
+        
+
        
         .Then(this.Email_Send)
         .Else(this.end)
@@ -89,22 +93,19 @@ class RMS_ApplicationFlow(Flow):
     )
 
     end = flow.End()
+   
     def send_form_complete_email(self, activation):
+           if activation.process.ICT_Approve == True :
+                current_process=RMSGeneralInformationProcess.objects.get(process_ptr_id=activation.process.id)
+                current_process.fully_approved=True
+                current_process.save()
            print(f'{activation.process} finished')
         # subject = activation.process
         # message = 'Hi {user.username}, thank you for registering in geeksforgeeks.'
         # email_from = settings.EMAIL_HOST_USER
         # recipient_list = ['benngovi47@gmail.com' ]
         # send_mail( subject, message, email_from, recipient_list )
-def send_form_complete_email(self, activation):
-           print(f'{activation.process} finished')
-        # subject = activation.process
-        # message = 'Hi {user.username}, thank you for registering in geeksforgeeks.'
-        # email_from = settings.EMAIL_HOST_USER
-        # recipient_list = ['benngovi47@gmail.com' ]
-        # send_mail( subject, message, email_from, recipient_list )
-
-           
+  
             
             
             

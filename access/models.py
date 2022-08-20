@@ -63,12 +63,13 @@ class RMSGeneralInformationProcess(Process):
     ICT_Approve=models.BooleanField(default=False,null=True,blank=True)
     date_approved_by_ict=models.DateField(auto_now=True,null=True)
     ICTAuthority_email = models.EmailField(null=True,blank=True,help_text='Enter Your email to digitally sign . i.e ben@kws.go.ke')
-    
+    ICT_Remarks=models.TextField(null=True,blank=True,help_text='You can leave blank if no comments')
     #Head department verification
     HOD_name = models.CharField(max_length=50,null=True,blank=True)
     HOD_approve=models.BooleanField(default=False,null=True,blank=True)
     date_approved_by_department_head=models.DateField(auto_now=True,null=True,blank=True)
     HOD_email = models.EmailField(null=True,blank=True,help_text='Enter Your email to digitally sign . i.e ben@kws.go.ke')
-    
+    HOD_Remarks=models.TextField(null=True,blank=True,help_text='You can leave blank if no comments')
+    fully_approved=models.BooleanField(default=False,null=True,blank=True)
     
    
