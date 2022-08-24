@@ -1,4 +1,9 @@
-
+/**
+* Template Name: NiceAdmin - v2.2.0
+* Template URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+* Author: BootstrapMade.com
+* License: https://bootstrapmade.com/license/
+*/
 (function() {
   "use strict";
 
@@ -37,7 +42,7 @@
    */
   if (select('.toggle-sidebar-btn')) {
     on('click', '.toggle-sidebar-btn', function(e) {
-      select('body').classList.toggle('active')
+      select('body').classList.toggle('toggle-sidebar')
     })
   }
 
@@ -61,7 +66,7 @@
       let section = select(navbarlink.hash)
       if (!section) return
       if (position >= section.offsetTop && position <= (section.offsetTop + section.offsetHeight)) {
-          
+        navbarlink.classList.add('active')
       } else {
         navbarlink.classList.remove('active')
       }
@@ -294,13 +299,16 @@
    */
   const datatables = select('.datatable', true)
   datatables.forEach(datatable => {
+    responsive: true;
+    
     new simpleDatatables.DataTable(datatable);
   })
+ 
 
   /**
    * Autoresize echart charts
    */
-  const mainContainer = select('#main');
+const mainContainer = select('#main');
   if (mainContainer) {
     setTimeout(() => {
       new ResizeObserver(function() {
