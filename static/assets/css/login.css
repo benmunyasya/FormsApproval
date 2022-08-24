@@ -49,8 +49,8 @@ body {
     border-top: solid 1px rgba(255, 255, 255, .5);
     border-radius: 5px;
     box-shadow: 0px 2px 7px rgba(0, 0, 0, 0.2);
-    overflow:hidden;
-    transition: all .5s ease
+    overflow:auto;
+    transition: all 5s ease
 }
 
 .frame-long {
@@ -125,7 +125,8 @@ li {
 .form-signin {
    
   width: 100%;
-  max-width: 330px;
+  max-width: 300px;
+  height:300px;
   padding: 15px;
   margin:  auto;
   transition: opacity .5s ease, transform 2s ease;
@@ -164,16 +165,26 @@ li {
 .form-signup input{
     outline-color: rgba(222, 236, 147, 0.8);
   border:none ;
-  border-bottom: 3px solid rgba(78, 92, 7, 0.8);
+  border: 1px solid rgba(78, 92, 7, 0.8);
   text-align:center;
 
 } 
+.form-signup{
+    width: 100%;
+  max-width: 330px;
+  padding: 15px;
+  height: 550px;
+  margin:  auto;
+  transition: opacity .5s ease, transform 2s ease;
+  transition: all 5s ease;
+ 
 
+}
 .form-signin-left {
     transform: translateX(-400px);
     opacity: .0
 }
-.form-signup {
+/* .signup {
     width: 430px;
     height: 475px;
     font-size: 12px;
@@ -185,14 +196,14 @@ li {
     top: -375px;
     left: 400px;
     opacity: 0;
-    transition: all 1s ease
-}
-.form-signup-left {
+    transition: all 5s ease
+} */
+.signup-left {
     transform: translateX(-399px);
     opacity: 1
 }
 
-.form-signup-down {
+.signup-down {
     top: 0px;
     opacity: 0
 } 
@@ -211,8 +222,8 @@ li {
 
  label {
     font-weight: 400;
-    text-transform:lowercase;
-    text-align:center;
+    text-transform:uppercase;
+    text-align:left;
     font-size: 13px;
     padding-left: 15px;
     padding-bottom: 3px;
@@ -220,65 +231,12 @@ li {
     color: rgba(57, 65, 15, 0.8);
     display: block
 }
-.btn-signup {
-    float: left;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 13px;
-    text-align: center;
-    color: #ffffff;
-    padding-top: 8px;
-    width: 100%;
-    height: 35px;
-    border: none;
-    border-radius: 20px;
-    margin-top: 23px;
-    background-color: #1059FF
+.btn-color{
+    border-radius: 50px;
+  color: #fff;
+  background:  rgba(102,118,24,1.0);
+  padding: 15px;
+  cursor: pointer;
+  border: none !important;
+  margin-top: -12px;
 }
-
-.btn-signin {
-    float: left;
-    padding-top: 8px;
-    width: 100%;
-    height: 35px;
-    border: none;
-    border-radius: 20px;
-    margin-top: -8px
-}
-
-.btn-animate {
-    float: left;
-    font-weight: 700;
-    text-transform: uppercase;
-    font-size: 13px;
-    text-align: center;
-    color: rgba(255, 255, 255, 1);
-    padding-top: 8px;
-    width: 100%;
-    height: 35px;
-    border: none;
-    border-radius: 20px;
-    margin-top: 23px;
-    background-color: rgba(16, 89, 255, 1);
-    left: 0px;
-    top: 0px;
-    transition: all .5s ease, top .5s ease .5s, height .5s ease .5s, background-color .5s ease .75s
-}
-
-.btn-animate-grow {
-    width: 130%;
-    height: 625px;
-    position: relative;
-    left: -55px;
-    top: -420px;
-    color: rgba(255, 255, 255, 0);
-    background-color: rgba(255, 255, 255, 1)
-}
-
-a.btn-signup:hover,
-a.btn-signin:hover {
-    cursor: pointer;
-    background-color: #0F4FE6;
-    transition: background-color .5s
-}
-

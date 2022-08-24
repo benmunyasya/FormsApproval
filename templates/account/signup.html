@@ -1,11 +1,14 @@
 {% extends 'base.html' %}
-{% comment %} 
-{%block content%}
-{% load crispy_forms_tags %}
+{% block content %}
 {%load static%}
+{% load crispy_forms_tags %}
  {% block css %} 
     <link href="{% static '/assets/css/login.css' %}" rel="stylesheet">
 {% endblock css %} 
+{% comment %} 
+
+{% load crispy_forms_tags %}
+
 <style>
  
 </style>
@@ -46,7 +49,7 @@
                 <input class="form-styling" type="text" name="username" placeholder="" /> <label for="dlno">Driving License Number</label> <input class="form-styling" type="text" name="username" placeholder="" /> <label for="password">Password</label> <input class="form-styling" type="text" name="password" placeholder="" /> <input type="checkbox" id="checkbox" /> <label for="checkbox"><span class="ui"></span>Keep me signed in</label>
                   <div class="btn-animate"> <a class="btn-signin">Login to your account</a> </div>
               </form> 
-              <form class="form-signup" method="POST" > 
+              <form cla" method="POST" > 
                 {% csrf_token %}
                 {{form_register}}
                {% comment %}
@@ -80,7 +83,7 @@
     $(function() {
       $(".btn1").click(function() {
       $(".form-signin").toggleClass("form-signin-left");
-      $(".form-signup").toggleClass("form-signup-left");
+      ").toggleCla-left");
       $(".frame").toggleClass("frame-long");
       $(".signup-inactive").toggleClass("signup-active");
       $(".signin-active").toggleClass("signin-inactive");
@@ -92,7 +95,7 @@
       $(function() {
       $(".btn-signup").click(function() {
       $(".nav").toggleClass("nav-up");
-      $(".form-signup-left").toggleClass("form-signup-down");
+      -left").toggleCla-down");
       $(".success").toggleClass("success-left");
       $(".frame").toggleClass("frame-short");
       });
@@ -118,12 +121,48 @@
 {% load i18n %}
 {% load crispy_forms_tags %}
 
-{% block head_title %}{% trans "Signup" %}{% endblock %}
 
-{% block content %}
+
+
 <!-- view for this is in /accounts/signup/ -->
+<div class="container">
+  <div class="frame">
+    <div class='row d-flex justify-content-center'>
+           <img id='loginlogo' src="{% static '\assets\img\greenkwslogo (2).png'%}" alt="" >
+    </div>
+      <div class="nav">
+          <ul class="links">
+              <li class="signin-inactive"><a class="btn1"  href="{% url 'account_login' %}">Existing User</a></li>
+              <li class="signup-active"><a class="btn1" href="{% url 'account_signup' %}">Guest User</a></li>
+          </ul>
+      </div>
+      <hr class="my-4">
+      <div ng-app ng-init="checked = false">
+        <form class="form-signup" method="POST" action="{% url 'account_signup' %}">
+          {% csrf_token %}
+         {{ form|crispy }}
+          {% if redirect_field_value %}
+         <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+          {% endif %}
+          <br/>
+           <button class="primaryAction btn btn-primary btn-lg btn-block btn-color" type="submit">{% trans "Sign Up" %} &raquo;</button>
+        </form>
 
-<section class="vh-100" style="background-color: #dfe8da;">
+         
+         
+      </div>
+    
+     
+  </div> 
+</div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+
+
+{% comment %} <section class="vh-100" style="background-color: #dfe8da;">
   <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -149,5 +188,5 @@
       </div>
     </div>
   </div>
-</section>
-{% endblock %}
+</section> {% endcomment %}
+{% endblock content %}

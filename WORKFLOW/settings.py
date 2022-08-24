@@ -152,6 +152,9 @@ STATICFILES_DIRS = (
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
-LOGIN_REDIRECT_URL = '/dashboard'
-LOGOUT_REDIRECT_URL = '/accounts/login'
 
+ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/' 
+LOGIN_REDIRECT_URL = 'access:landing'
+ACCOUNT_FORMS={
+    'signup':'accounts.forms.CustomSignUpForm'
+}
