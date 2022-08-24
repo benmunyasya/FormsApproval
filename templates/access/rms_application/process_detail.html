@@ -110,6 +110,108 @@
 }
 
 </style>
+<main id="main" class="main">
+  <div class="row">
+  <div class="pagetitle col-8">
+    <h1>Forms Submitted for approval</h1>
+    <div class="container">
+      {%if  process.created_by == request.user %}
+              <div class="row">
+               <div class="col-md-12">
+                <div class="tracking">
+                  <strong class="title">Tracking your request</strong>
+              </div>
+              <div class="progress-track">
+                  <ul id="progressbar">
+          
+               {% for task in task_list %}
+
+                {% flowurl task user=request.user as task_url %}
+                {% if task.status == 'DONE' %}
+                <li class="step0 active " id="step1">{{ task.summary|default:task.flow_task  }}</li>
+                {% else %}
+                <li class="step0 text-right" id="step4">{{ task.summary|default:task.flow_task }}</li>
+                {% endif %}
+                {% endfor %}
+                   
+                     
+                  </ul>
+              </div>
+            </div>
+  </div><!-- End Page Title -->
+  
+</div>
+<section class="section dashboard">
+    
+   
+
+      
+      
+<div class="row"> 
+   
+<div class="col-12 col-xs-12">
+      <div class="card recent-sales">
+
+              <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+              </div>
+
+              <div class="card-body">
+                  <h5 class="card-title">Request  List<span>| All</span></h5>
+
+                  <table id="formlist" class="table datatable table-border table-sm" cellspacing="0"
+                  width="100% ">
+                    <thead>
+                      <tr>
+                       
+                        <th scope="col">Task Id</th>
+                          <th scope="col">Description</th>
+                          <th scope="col">Assigned To</th>
+                          <th scope="col">Status</th>
+                          
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for task in task_list %}
+                      {% flowurl task user=request.user as task_url %}
+                      <tr>
+                        <td>
+                          {% if task_url %}<a href="{{ task_url}}">{{forloop.counter}}</a>{% else %}{{ task.pk }}{% endif %}
+                        </td>
+                        <td>{{ task.summary|default:task.flow_task }}</td>
+                        <td>{{ task.owner }}</td>
+                        <td>{{ task.status }}</td>
+                      </tr>
+                      {% endfor %} 
+                     
+                    </tbody>
+                  </table>
+
+          
+
+              </div>
+           
+
+       
+             
+      </div><!-- End recent sales --> 
+</div> 
+
+</div>      
+
+
+</section>
+</main><!-- End #main -->
 <main id="main" role="main" class="col-md-12 ml-sm-auto col-lg-10 pt-3 px-4">
     <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
       <div class="container">
