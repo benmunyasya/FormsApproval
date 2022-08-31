@@ -1,8 +1,8 @@
 {% load crispy_forms_tags %}
-<div class="card">
+<div class="card" id="mainCard">
     <div class="card-body">
       <h5 class="card-title ">REVENUE MANAGEMENT SYSTEM ACCOUNT REQUISITION FORM</h5>
-      <p class='strong'>NOTE: For instructions on completing this form; as well as, user requirements, please see down below.
+      <p class='strong'>NOTE:For instructions on completing this form; as well as, user requirements, please see down below.
 
         </p>
      
@@ -11,7 +11,7 @@
         {%csrf_token%}
 
         <!--RMS GENERAL INFORMATION FORM-->
-      <div class="card col-12">
+      <div class="card col-12" >
         <div class="card-body">
           <h5 class="card-title">SECTION I: General Information</h5>
           
@@ -125,22 +125,10 @@
         <div class="card col-12">
           <div class="card-body">
             <h5 class="card-title">SECTION II: ACCESS & GROUP SELECTION</h5>
-           {% if request.user.is_ICT_Authority %} 
-           <fieldset>
-            {%else%}
-            <fieldset disabled ='disabled' onsubmit="myFunction()">
-           {%endif%}
+          
             <!-- Bordered Table -->
-            <table class="table table-bordered">
-              {% comment %} <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Name</th>
-                  <th scope="col">Position</th>
-                  <th scope="col">Age</th>
-                  <th scope="col">Start Date</th>
-                </tr>
-              </thead> {% endcomment %}
+            <table class="table table-bordered table-responsive">
+             
               <tbody>
                 <tr>
                  

@@ -111,36 +111,7 @@
 
 </style>
 <main id="main" class="main">
-  <div class="row">
-  <div class="pagetitle col-8">
-    <h1>Forms Submitted for approval</h1>
-    <div class="container">
-      {%if  process.created_by == request.user %}
-              <div class="row">
-               <div class="col-md-12">
-                <div class="tracking">
-                  <strong class="title">Tracking your request</strong>
-              </div>
-              <div class="progress-track">
-                  <ul id="progressbar">
-          
-               {% for task in task_list %}
-
-                {% flowurl task user=request.user as task_url %}
-                {% if task.status == 'DONE' %}
-                <li class="step0 active " id="step1">{{ task.summary|default:task.flow_task  }}</li>
-                {% else %}
-                <li class="step0 text-right" id="step4">{{ task.summary|default:task.flow_task }}</li>
-                {% endif %}
-                {% endfor %}
-                   
-                     
-                  </ul>
-              </div>
-            </div>
-  </div><!-- End Page Title -->
-  
-</div>
+ 
 <section class="section dashboard">
     
    
@@ -150,6 +121,31 @@
 <div class="row"> 
    
 <div class="col-12 col-xs-12">
+  
+    {%if  process.created_by == request.user %}
+        
+             <div class="col-md-12" style="padding:0px">
+               <div class="tracking">
+                <strong class="title">Tracking your request</strong>
+               </div>
+            <div class="progress-track" style="padding:0px">
+                <ul id="progressbar">
+        
+             {% for task in task_list %}
+
+              {% flowurl task user=request.user as task_url %}
+              {% if task.status == 'DONE' %}
+              <li class="step0 active " id="step1">{{ task.summary|default:task.flow_task  }}</li>
+              {% else %}
+              <li class="step0 text-right" id="step4">{{ task.summary|default:task.flow_task }}</li>
+              {% endif %}
+              {% endfor %}
+                 
+                   
+                </ul>
+            </div>
+       
+      {% endif %}
       <div class="card recent-sales">
 
               <div class="filter">
@@ -168,7 +164,7 @@
               <div class="card-body">
                   <h5 class="card-title">Request  List<span>| All</span></h5>
 
-                  <table id="formlist" class="table datatable table-border table-sm" cellspacing="0"
+                  <table id="formlist" class="table datatable table-responsive table-border table-sm" cellspacing="0"
                   width="100% ">
                     <thead>
                       <tr>
@@ -211,87 +207,5 @@
 
 
 </section>
-</main><!-- End #main -->
-<main id="main" role="main" class="col-md-12 ml-sm-auto col-lg-10 pt-3 px-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
-      <div class="container">
-        {%if  process.created_by == request.user %}
-                <div class="row">
-                 <div class="col-md-12">
-                  <div class="tracking">
-                    <strong class="title">Tracking your request</strong>
-                </div>
-                <div class="progress-track">
-                    <ul id="progressbar">
-            
-                 {% for task in task_list %}
-
-                  {% flowurl task user=request.user as task_url %}
-                  {% if task.status == 'DONE' %}
-                  <li class="step0 active " id="step1">{{ task.summary|default:task.flow_task  }}</li>
-                  {% else %}
-                  <li class="step0 text-right" id="step4">{{ task.summary|default:task.flow_task }}</li>
-                  {% endif %}
-                  {% endfor %}
-                     
-                       
-                    </ul>
-                </div>
-              </div>
-                  <div class="col-md-12 order-md-1">
-                    <div class="row px-3">
-                      <div class="col">
-                         
-                          
-                            
-                          
-                      </div>
-                  </div>
-                    <table class="table table-borderless datatable">
-                      <thead>
-                        <tr>
-                          <th scope="col">Task Id</th>
-                          <th scope="col">Description</th>
-                          <th scope="col">Assigned To</th>
-                          <th scope="col">Status</th>
-                          
-    
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {% for task in task_list %}
-                        {% flowurl task user=request.user as task_url %}
-                        <tr>
-                          <td>
-                            {% if task_url %}<a href="{{ task_url}}">{{forloop.counter}}</a>{% else %}{{ task.pk }}{% endif %}
-                          </td>
-                          <td>{{ task.summary|default:task.flow_task }}</td>
-                          <td>{{ task.owner }}</td>
-                          <td>{{ task.status }}</td>
-                        </tr>
-                        {% endfor %} 
-                       
-                        
-                       
-                      </tbody>
-                    </table>
-                  </div>
-                 
-  
-                </div>
-              
-        
-         
-        
-         
-        {%endif%}  
-  
-              </div>
-     
-    </div>
-
-  
-
-    
-  </main>
+</main>
 {%endblock content%}

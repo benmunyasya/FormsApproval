@@ -8,7 +8,7 @@
 {% endblock css %}    
       
 
-  
+ <body> 
   <!-- ======= Header ======= -->
   <header id="header" class="header fixed-top d-flex align-items-center">
 
@@ -83,7 +83,7 @@
         <li class="nav-item dropdown pe-3">
 
           <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
-           
+            <img src="{% static '\assets\img\profile.png'%}" alt="Profile" class="rounded-circle">
             <span class="d-none d-md-block dropdown-toggle ps-2">{{user}}|{{user.department}}</span>
           </a><!-- End Profile Iamge Icon -->
 
@@ -120,7 +120,7 @@
           
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'account_logout' %">
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'account_logout' %}" >
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>
@@ -183,7 +183,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="">
             <i class="bi bi-file-earmark-break-fill"></i>
             <span>EMAIL REQUEST FORM</span>
           </a>
@@ -219,4 +219,6 @@
     </ul>
 
   </aside>
+<script src="{% static '\assets\js\main.js' %}"></script>
+</body> 
   {% endblock content %}

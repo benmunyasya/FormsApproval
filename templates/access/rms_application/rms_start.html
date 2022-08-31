@@ -10,21 +10,31 @@
     width:50%;
     
 }
-
 .card2 {
-    width:50%;
-   
+  width:50%;
+ 
 }
+@media only screen and (max-width: 1300px) {
+  .card1 {
+    width:100%;
+    
+}
+.card2 {
+  width:100%;
+ 
+}
+}
+
+
 </style>
-<main id="main" role="main" class="main col-md-9 ml-sm-auto col-lg-10 pt-3 px-4">
-    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+<main id="main" role="main" class="main">
+   
       <section class="section">
         <div class="row">
-          <div class="col-lg-12">
+         
 
 
-
-            <div class="card">
+            <div class="card col-12" id="mainCard">
               <div class="card-body">
                 <h5 class="card-title ">REVENUE MANAGEMENT SYSTEM ACCOUNT REQUISITION FORM</h5>
                 <p class='strong'>NOTE: For instructions on completing this form; as well as, user requirements, please see down below.
@@ -32,22 +42,22 @@
                   </p>
                
                 
-                <form method='POST'class="row g-3" id='rmsStart' onsubmit="return validateMyForm()">
+                <form method='POST'class="" id='rmsStart' onsubmit="return validateMyForm()">
                   {%csrf_token%}
 
                   <!--RMS GENERAL INFORMATION FORM-->
-                <div class="card col-12">
+                <div class="card">
                   <div class="card-body">
                     <h5 class="card-title">SECTION I: General Information</h5>
                   
-                    <div class="col-md-12">
+                    <div class="col-12 ">
 
                       {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
                       {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
                       {{form.request_type|as_crispy_field}}
                   </div>
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3" >
                       {% comment %} <label for="inputName5" class="form-label"> Last  Name</label>
                       <input type="text" class="form-control" id="inputName5"> {% endcomment %}
                       {{form.last|as_crispy_field}}
@@ -62,7 +72,7 @@
                       <input type="text" class="form-control" id="inputName5"> {% endcomment %}
                       {{form.middle|as_crispy_field}}
                     </div>
-                    <div class="col-md-3">
+                    <div class="col-md-3 ">
                       {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
                       <input type="text" class="form-control" id="inputName5"> {% endcomment %}
                       {{form.salutation|as_crispy_field}}
@@ -94,7 +104,7 @@
                     </div>
                   </div>
                   <div  class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-3 ">
                       {% comment %} <label for="inputName5" class="form-label">Mobile No.</label>
                       <input type="text" class="form-control" id="inputName5"> {% endcomment %}
                       {{form.mobile_no|as_crispy_field}}
@@ -157,16 +167,8 @@
                       <h5 class="card-title">SECTION II: ACCESS & GROUP SELECTION</h5>
                       
                       <!-- Bordered Table -->
-                      <table class="table table-bordered">
-                        {% comment %} <thead>
-                          <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Position</th>
-                            <th scope="col">Age</th>
-                            <th scope="col">Start Date</th>
-                          </tr>
-                        </thead> {% endcomment %}
+                      <table class="table table-responsive table-responsive-md-6 table-bordered d-flex-row d-flex-column">
+                       
                         <tbody>
                           <tr>
                            
@@ -216,11 +218,11 @@
                       </div>
                     </div>
                   </div>
-                  <div class="card col-12">
+                  <div class="card ">
                     <div class="card-body">
                       <h5 class="card-title ">Revenue Management User Security Agreement</h5>
                       <p class='strong'>This form is to request access to the Revenue Management System</p>
-                    <div class="d-flex flex-lg-row flex-column-reverse">
+                    <div class="d-flex flex-lg-row flex-column">
                       <div class="card card2">
                 
                         <div class="card-body">
@@ -338,7 +340,7 @@
               </div>
             </div>
 
-          </div>
+         
 
 
         </div>
@@ -346,7 +348,7 @@
 
 
 
-    </div>
+   
 
 
 

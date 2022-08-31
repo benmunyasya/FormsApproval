@@ -2,14 +2,10 @@
 {%block content%}
 
 {%load static%}
-<style>
-    .logo{
-        width:80px;
-        height:71px;
-    
-    }  
-    
-</style>
+{% block css %} 
+    <link href="{% static '/assets/css/landing.css' %}" rel="stylesheet">
+{% endblock css %} 
+
 
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light fixed-top p-0" id="mainNav">
@@ -42,7 +38,7 @@
                 <div class="col-lg-5">
                     <div class="py-5 px-4 masthead-cards">
                         <div class="d-flex">
-                            <a href="{% url 'access:dashboard' %}" class="w-50 pr-3 pb-4">
+                            <a href="" class="w-50 pr-3 pb-4">
                                 <div class="card border-0 border-bottom-red  formcard">
                                     <div class="card-body text-center">
                                         

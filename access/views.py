@@ -12,6 +12,6 @@ def dashboard(request):
     if user.is_kwsstaff:
 
          
-         return HttpResponseRedirect('/request_forms/')
+         return HttpResponseRedirect('/rms_forms/')
     else:
-        return HttpResponseRedirect('/request_forms/tasks/')
+        return HttpResponseRedirect('/rms_forms/tasks/')
