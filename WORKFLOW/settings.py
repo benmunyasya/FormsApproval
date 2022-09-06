@@ -12,6 +12,9 @@ https://docs.djangoproject.com/en/4.0/ref/settings/
 
 from pathlib import Path
 import os
+import ldap
+from django_auth_ldap.config import LDAPSearch,logging
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -20,13 +23,13 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-d!gtk=*4tl1opxe=s!1$)3suo&v&rs2cf9inagpy(qir$as_yu'
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
-
-ALLOWED_HOSTS = ['*','127.0.0.1']
-
+DEBUG = False
+ALLOWED_HOSTS = [ 'localhost','127.0.0.1','172.16.1.9','VIRTUAL.kws.local']
+#SESSION_COOKIE_SECURE=True
+#CSRF_COOKIE_SECURE=True
 
 # Application definition
 
@@ -41,9 +44,10 @@ INSTALLED_APPS = [
     'access',
     'viewflow',
     'crispy_forms',
-     'allauth',
-    'allauth.account',
-    'allauth.socialaccount',
+   # 'allauth',
+   #'allauth.account',
+   # 'allauth.socialaccount',
+    'rest_framework'
   
 ]
 
@@ -67,7 +71,7 @@ AUTH_USER_MODEL = 'accounts.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'templates/access/rms_application')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'templates/accounts'),os.path.join(BASE_DIR, 'templates/access/rms_application')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -83,20 +87,13 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'WORKFLOW.wsgi_windows.application'
 
-# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-# EMAIL_HOST = 'smtp.gmail.com'
-# EMAIL_USE_TLS = True
-# EMAIL_PORT = 587
-# EMAIL_HOST_USER ='Ben Desh'
-# EMAIL_HOST_PASSWORD = '074143ben'
-# Database
-# https://docs.djangoproject.com/en/4.0/ref/settings/#databases
+
 DATABASES = {
    'default':  {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'form_access_db',
        'USER': 'postgres',
-       'PASSWORD': 'toor',
+       'PASSWORD':os.environ['DATABASE_PASSWORD'],
        'HOST': '127.0.0.1',
        'PORT': 5432,
 
@@ -104,8 +101,9 @@ DATABASES = {
 }
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTHENTICATION_BACKENDS = [
-    'django.contrib.auth.backends.ModelBackend',
-    'allauth.account.auth_backends.AuthenticationBackend',
+    'django_auth_ldap.backend.LDAPBackend',
+  'django.contrib.auth.backends.ModelBackend',
+    #'allauth.account.auth_backends.AuthenticationBackend',
 ]
 
 # Password validation
@@ -152,8 +150,40 @@ COLLECTSTATIC=1
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-ACCOUNT_LOGOUT_REDIRECT_URL = '/accounts/login/' 
+LOGOUT_REDIRECT_URL = '/accounts/login/' 
 LOGIN_REDIRECT_URL = 'access:landing'
-ACCOUNT_FORMS={
-    'signup':'accounts.forms.CustomSignUpForm'
+#LOGIN_ATTEMPTS=3
+#ACCOUNT_FORMS={
+   # 'signup':'accounts.forms.CustomSignUpForm'
+#}
+
+
+
+AUTH_LDAP_SERVER_URI ='ldap://172.16.1.2:3268'
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
+AUTH_LDAP_BIND_DN = "ldapauth@KWS.local"
+AUTH_LDAP_BIND_PASSWORD ='w!ldl!f3y3tu'
+
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    "dc=KWS,dc=local", ldap.SCOPE_SUBTREE,"sAMAccountName=%(user)s"
+)
+
+
+# AUTH_LDAP_USER_ATTR_MAP = {
+# "username": "sAMAccountName",
+# "password": "userPassword"
+# }
+AUTH_LDAP_USER_ATTR_MAP = {
+    
+    "username": "sAMAccountName",
+    "first_name": "givenName",
+    "last_name": "sn",
+    "email": "mail",
+}
+
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {"console": {"class": "logging.StreamHandler"}},
+    "loggers": {"django_auth_ldap": {"level": "DEBUG", "handlers": ["console"]}},
 }

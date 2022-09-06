@@ -41,6 +41,7 @@
       select('body').classList.toggle('toggle-sidebar')
     })
   }
+  
 
   /**
    * Search bar toggle

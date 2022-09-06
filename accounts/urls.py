@@ -1,15 +1,12 @@
-from atexit import register
 from django.urls import path
 
 
 
-
-# app_name='accounts'
-# urlpatterns = [
-#      path('login/',login,name='login' ),
-#       path('register/',signup, name='register' ),
-
+from .views  import login,logout
+app_name='accounts'
+urlpatterns = [
+     path('login/',login,name='login'),
+      path('logout/',logout,name='logout'),
      
-#      #path('login_auth/',login,name='login' ),
      
-# ]
+]

@@ -89,7 +89,7 @@
 
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
-              <h6>{{user}}</h6>
+              <h6>{{user.first_name}}    {{user.last_name}}</h6>
               <span>{{user.department}}</span>
             </li>
             <li>
@@ -120,7 +120,7 @@
           
 
             <li>
-              <a class="dropdown-item d-flex align-items-center" href="{% url 'account_logout' %}" >
+              <a class="dropdown-item d-flex align-items-center" href="{% url 'logout' %}" >
                 <i class="bi bi-box-arrow-right"></i>
                 <span>Sign Out</span>
               </a>

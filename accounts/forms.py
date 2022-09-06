@@ -26,7 +26,7 @@ class CustomSignUpForm(SignupForm):
         
         user=super(CustomSignUpForm,self).save(request)
         user.is_kwsstaff=True
-        user.is_superuser=True
+       
         user.est_no=est_no
         user.area=area
         user.department=department

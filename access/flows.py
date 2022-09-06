@@ -69,7 +69,7 @@ class RMS_ApplicationFlow(Flow):
        # ICT_Authority_name = forms.CharField(widget=forms.TextInput(attrs={'readonly':'True'}))
         task_title="ICT APPROVING AUTHORITY/DATA OWNER",
         form_class=RMSForm,
-        success_url = '/request_form/tasks',
+       # success_url = '/request_form/tasks',
        
        # fields=['ICT_Authority_name', 'ICT_Approve','ICTAuthority_email'],
        
@@ -162,7 +162,7 @@ class EmailRequestFlow(Flow):
         task_result_summary="Request is {{ process.IT_Approve|yesno:'Approved,Rejected' }} by IT Authority",
         
     ).Assign(
-        lambda act: User.objects.get(is_ICT_Authority=True)
+        lambda act: User.objects.get(username='bomware')
         ).Next(this.system_verify)
     system_verify = (
         flow.If(lambda activation: activation.process.IT_Approve)

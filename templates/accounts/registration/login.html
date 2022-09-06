@@ -1,0 +1,75 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% load crispy_forms_tags %}
+{%load static%}
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+
+
+
+ {% block css %} 
+    <link href="{% static '/assets/css/login.css' %}" rel="stylesheet">
+{% endblock css %} 
+
+
+
+    
+
+   
+
+    <!-- Custom styles for this template -->
+    
+    <div class="container">
+      <div class="frame">
+        <div class='row d-flex justify-content-center'>
+               <img id='loginlogo' src="{% static '\assets\img\greenkwslogo (2).png'%}" alt="" >
+        </div>
+          <div class="nav">
+              <ul class="links">
+                  <li class="signin-active"><a class="btn1">Existing User</a></li>
+                  <li class="signup-inactive"><a class="btn1" href="#">Guest User</a></li>
+              </ul>
+          </div>
+          <div ng-app ng-init="checked = false">
+            <form class="form-signin " method='POST' >
+              {% for message in messages %}
+    
+              <div class="alert alert-success">
+                 <a class="close" href="#" data-dismiss="alert">×</a>
+             {{ message }}
+               </div>
+  
+             {% endfor %}
+              {% csrf_token %}
+           
+              <label for="username">User Name</label>
+              <input type="text" id="username" name="username"  class="form-control"  >
+              <label for="password">Password</label>
+              <input type="password" id="password" name="password"  class="form-control"  >
+              {% if redirect_field_value %}
+              <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+               {% endif %}
+                <button class="primaryAction btn btn-primary btn-lg btn-block " type="submit">{% trans "Sign In" %}</button>
+          
+           
+          </form>
+           
+          </div>
+        
+         
+      </div> 
+  </div>
+
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+ 
+
+
+<!-- view in /accounts/login/ -->
+
+
+
+
+{% endblock %}

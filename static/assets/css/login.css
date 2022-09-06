@@ -156,7 +156,7 @@ li {
     outline:none;
 }
 .form-signin input[type="password"] {
-  margin-bottom: 10px;
+  margin-bottom: 0;
   outline-color: rgba(222, 236, 147, 0.8);
   border:none ;
   border-bottom: 3px solid rgba(78, 92, 7, 0.8);
@@ -238,5 +238,5 @@ li {
   padding: 15px;
   cursor: pointer;
   border: none !important;
-  margin-top: -12px;
+  margin-top: 20px;
 }
