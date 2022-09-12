@@ -622,6 +622,10 @@ h1, h2, h3, h4, h5, h6 {
   color: rgba(78, 92, 7, 0.8);
   background: #fff;
 }
+.sidebar-nav .nav-link.collapsed:active {
+  color:white;
+  background:  rgba(78, 92, 7, 0.8);
+}
 .sidebar-nav .nav-link.collapsed i {
   color: #899bbd;
 }

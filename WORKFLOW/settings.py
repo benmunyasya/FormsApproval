@@ -71,7 +71,7 @@ AUTH_USER_MODEL = 'accounts.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'templates/accounts'),os.path.join(BASE_DIR, 'templates/access/rms_application')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'templates/access'),os.path.join(BASE_DIR, 'templates/accounts'),os.path.join(BASE_DIR, 'templates/access/rms_application')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [

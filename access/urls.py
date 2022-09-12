@@ -7,14 +7,14 @@ from accounts.models import User
 
 from .views import landing,dashboard
 rmsapply_urls = FlowViewSet(RMS_ApplicationFlow).urls
-#emailapply_urls = FlowViewSet(EmailRequestFlow).urls
+emailapply_urls = FlowViewSet(EmailRequestFlow).urls
 app_name='access'
 urlpatterns = [
      path('',landing,name='landing'),
     
       
      path('dashboard',dashboard,name='dashboard'),
-     path('rms_forms/',include(rmsapply_urls),name='rms-forms'),
-     #path('emailforms/',include(emailapply_urls),name='emailforms'),
+     path('forms/',include(rmsapply_urls),name='RMS'),
+     path('forms/',include(emailapply_urls),name='EMAIL'),
 ]
 

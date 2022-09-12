@@ -10,7 +10,7 @@ class User(AbstractUser):
     
     is_ICT_Authority = models.BooleanField(default=False)
     is_Department_Head_Authority = models.BooleanField(default=False)
-    is_kwsstaff=models.BooleanField(default=False)
+   
     department = models.CharField(max_length=100,null=True,blank=True)
     area=models.CharField(max_length=100,null=True,blank=True)
     est_no=models.CharField(max_length=100,null=True,blank=True)

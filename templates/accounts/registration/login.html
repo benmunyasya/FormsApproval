@@ -34,14 +34,9 @@
           </div>
           <div ng-app ng-init="checked = false">
             <form class="form-signin " method='POST' >
-              {% for message in messages %}
-    
-              <div class="alert alert-success">
-                 <a class="close" href="#" data-dismiss="alert">×</a>
-             {{ message }}
-               </div>
+             
   
-             {% endfor %}
+            
               {% csrf_token %}
            
               <label for="username">User Name</label>

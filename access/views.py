@@ -9,8 +9,6 @@ def landing(request):
 @login_required(login_url='/accounts/login/')
 def dashboard(request):
     user=request.user
-    if user.is_kwsstaff:
+    return render(request,'dashboard.html',{'user':user})
 
-         return HttpResponseRedirect('/rms_forms/')
-    else:
-         return HttpResponseRedirect('/rms_forms/tasks/')
+       

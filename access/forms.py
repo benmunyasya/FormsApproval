@@ -36,7 +36,7 @@ class EmailRequestForm(forms.ModelForm):
         widgets = {
             'date_of_service_request': DateInput(),
             
-            'reasons_for_request':forms.RadioSelect(),
+            
             
 
             

@@ -4,7 +4,7 @@ from django.utils.decorators import method_decorator
 from viewflow import  flow, lock
 from viewflow.activation import STATUS
 from viewflow.base import Flow, this
-from viewflow.flow.views import CreateProcessView, UpdateProcessView,get_next_task_url
+from viewflow.flow.views import CreateProcessView, UpdateProcessView
 from accounts.models import User
 from .models import Email_Request_Process, RMSGeneralInformationProcess
 from  django.urls import reverse_lazy
@@ -107,17 +107,15 @@ class RMS_ApplicationFlow(Flow):
         # send_mail( subject, message, email_from, recipient_list )
 class EmailRequestFlow(Flow):
     process_class = Email_Request_Process
+   
     
     email_start = (
         flow.Start(
            
             CreateProcessView,
-             
-              
             form_class=EmailRequestForm,
-           
-         
-         task_title="Requested By:"
+            task_title="Requested By:"
+
         ).Permission(
             auto_create=True
         ).Next(this.approve_by_HOD)
@@ -183,6 +181,6 @@ class EmailRequestFlow(Flow):
         print('hello')
      
             
-            
+          
             
             

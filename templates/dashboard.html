@@ -137,43 +137,31 @@
 
     <ul class="sidebar-nav" id="sidebar-nav">
 
-      {%if user.is_kwsstaff %}
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'access:index'%}">
-          <i class="bi bi-file-earmark-break-fill"></i><span> Your Applications</span>
+        <a class="nav-link collapsed" href="{% url 'access:dashboard' %}">
+          <i class="bi bi-house-door"></i><span> Home</span>
         </a>
         
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" href="{% url 'access:index'%}">
-          <i class="bi bi-list-task"></i><span> Queues</span><span class="badge badge-secondary badge-pill">{{queue_count}}</span>
+          <i class="bi bi-file-earmark-break-fill"></i><span>Your Submitted Requests</span>
         </a>
         
       </li>
+      
               
               
               
              
-      {%else%}
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'access:tasks' %}">
-          <i class="bi bi-list-task"></i><span> Requests</span><span class="badge badge-secondary badge-pill">{{inbox_count}}</span>
-        </a>
-        
-      </li>
-      <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'access:tasks' %}">
-          <i class="bi bi-list-task"></i><span> Approved</span><span class="badge badge-secondary badge-pill">{{inbox_count}}</span>
-        </a>
-        
-      </li>
-              
-             
-        
-             
-        {% endif %}
-
      
+      <li class="nav-item">
+        <a class="nav-link collapsed" href="{% url 'access:tasks' %}">
+          <i class="bi bi-list-task"></i><span> Tasks assigned to you</span><span class="badge badge-secondary badge-pill">{{inbox_count}}</span>
+        </a>
+        
+      </li>
+  
         <li class="nav-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">WORKFLOWS</li>
 
         <li class="nav-item">
@@ -183,7 +171,7 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="">
+          <a class="nav-link collapsed" href="{% url 'access:email_start' %}">
             <i class="bi bi-file-earmark-break-fill"></i>
             <span>EMAIL REQUEST FORM</span>
           </a>
@@ -207,18 +195,10 @@
 
       
 
-     
-
-      
-    
-
-    
-     
-
     
     </ul>
 
-  </aside>
+</aside>
 <script src="{% static '\assets\js\main.js' %}"></script>
 </body> 
   {% endblock content %}
