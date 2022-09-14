@@ -9,6 +9,6 @@ def landing(request):
 @login_required(login_url='/accounts/login/')
 def dashboard(request):
     user=request.user
-    return render(request,'dashboard.html',{'user':user})
+    return render(request,'dashboard_home.html',{'user':user})
 
        

@@ -6,14 +6,15 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
  
 # Create your views here.
-def logout(request):
-    logout(request)
+
 from django.contrib.auth import authenticate, login
 from django.contrib.auth import authenticate, login, logout
 from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django.contrib import messages
+def logout(request):
+    logout(request)
 def login(request):
     username = request.POST['username']
     password = request.POST['password']

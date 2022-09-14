@@ -42,6 +42,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'access',
+    'email_form',
     'viewflow',
     'crispy_forms',
    # 'allauth',
@@ -71,7 +72,11 @@ AUTH_USER_MODEL = 'accounts.User'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates'),os.path.join(BASE_DIR, 'templates/access'),os.path.join(BASE_DIR, 'templates/accounts'),os.path.join(BASE_DIR, 'templates/access/rms_application')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'),
+        os.path.join(BASE_DIR, 'templates/access'),
+        os.path.join(BASE_DIR, 'templates/accounts'),
+        os.path.join(BASE_DIR, 'templates/access/rms_application'),
+         os.path.join(BASE_DIR, 'templates/email_form/emailrequest')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -151,7 +156,7 @@ COLLECTSTATIC=1
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/accounts/login/' 
-LOGIN_REDIRECT_URL = 'access:landing'
+LOGIN_REDIRECT_URL = 'landing'
 #LOGIN_ATTEMPTS=3
 #ACCOUNT_FORMS={
    # 'signup':'accounts.forms.CustomSignUpForm'

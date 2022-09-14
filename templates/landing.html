@@ -16,14 +16,9 @@
                 <ul class="navbar-nav ms-auto my-1 my-lg-0">
            
                    {%if user.is_authenticated%}
-                   {% for message in messages %}
-    
-                   
-                      <a class="close" href="#" data-dismiss="alert">×</a>
-                  {{ message }}
-                  {% endfor %}
-                    <li class="nav-item"><a class="nav-link" href="{% url 'access:dashboard' %}"><i class="bi bi-list heading"></i> DASHBOARD<i class="bi bi-forward-fill"></i></a></li>
-                    <li class="nav-item"><a class="nav-link"  href="{% url 'logout' %}"><i class="bi bi-person-lines heading"></i> SIGN OUT</a></li>
+                 
+                  
+                    <li class="nav-item"><a class="nav-link"  href="{% url 'logout' %}"><i class="bi bi-person-lines heading"></i> {{request.user}}-SIGN OUT</a></li>
                     {%else%}
                     <li class="nav-item"><a class="nav-link" href="{% url 'login' %}"><i class="bi bi-person-fill heading"></i>LOGIN </a></li>
                     {% endif %}
@@ -44,6 +39,25 @@
                 <div class="col-lg-5">
                     <div class="py-5 px-4 masthead-cards">
                         <div class="d-flex">
+                            <a href="{% url 'dashboard' %}" class="w-50 pr-3 pb-4">
+                                <div class="card border-0 border-bottom-red  formcard">
+                                    <div class="card-body text-center">
+                                        
+                                       <span><i class="bi bi-list  strong"></i></span> Dashboard<br><span><i class="bi bi-forward-fill"></i></span>
+                                    </div>
+                                </div>
+                            </a>
+                            <a href="{% url 'login' %}" class="w-50 pr-3 pb-4">
+                                <div class="card border-0 border-bottom-red  formcard">
+                                    <div class="card-body text-center">
+                                        
+                                       <span><i class="bi bi-person strong"></i></span>Switch User<br><span><i class="bi bi-arrow-return-left"></i></span>
+                                    </div>
+                                </div>
+                            </a>
+
+                        </div>
+                        {% comment %} <div class="d-flex">
                             <a href="" class="w-50 pr-3 pb-4">
                                 <div class="card border-0 border-bottom-red  formcard">
                                     <div class="card-body text-center">
@@ -52,7 +66,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="{% url 'access:dashboard' %}" class="w-50 pl-3 pb-4">
+                            <a href="#" class="w-50 pl-3 pb-4">
                                 <div class="card border-0 border-bottom-blue  formcard">
                                     <div class="card-body text-center">
                                         
@@ -71,7 +85,7 @@
                                     </div>
                                 </div>
                             </a>
-                            <a href="{% url 'access:dashboard' %}" class="w-50 pl-3">
+                            <a href="{% url 'dashboard' %}" class="w-50 pl-3">
                                 <div class="card border-0 border-bottom-green  formcard">
                                     <div class="card-body text-center">
                                         
@@ -79,7 +93,7 @@
                                     </div>
                                 </div>
                             </a>
-                        </div>
+                        </div> {% endcomment %}
                         <div class="shape"></div>
                     </div>
                 </div>

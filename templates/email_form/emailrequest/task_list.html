@@ -1,0 +1,102 @@
+
+
+{% extends 'base.html' %}
+{%block content%}
+{% load crispy_forms_tags %}
+{% load viewflow %}
+{%load static%}
+{% include 'dashboard.html' %}
+
+
+<main id="main" class="main">
+  <div class="row">
+  <div class="pagetitle col-8">
+    <h1>Tasks assigned to you</h1>
+
+  </div><!-- End Page Title -->
+  
+</div>
+<section class="section dashboard">
+    
+   
+
+      
+      
+<div class="row"> 
+   
+<div class="col-12 col-md-12 col-xs-12">
+      <div class="card recent-sales">
+
+              <div class="filter">
+                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
+                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
+                    <li class="dropdown-header text-start">
+                      <h6>Filter</h6>
+                    </li>
+
+                    <li><a class="dropdown-item" href="#">Today</a></li>
+                    <li><a class="dropdown-item" href="#">This Month</a></li>
+                    <li><a class="dropdown-item" href="#">This Year</a></li>
+                  </ul>
+              </div>
+
+              <div class="card-body">
+                  <h5 class="card-title">Request  List<span>| All</span></h5>
+
+                  <table id="formlist" class="table datatable   table-border table-sm  table-responsive " cellspacing="0"
+                  width="100% ">
+                    <thead>
+                      <tr>
+                       
+                        <th scope="col">Request No</th>
+                   
+                    <th scope="col">Form</th>
+                   
+                        <th scope="col">Submitted On</th>
+                        <th scope="col">Request From</th>
+                        <th scope="col">Description</th>
+                       
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for task in task_list %}
+                        {% flowurl task user=request.user as task_url %}
+                        <tr>
+                          <td>
+                            {% if task_url %}<a href="{{ task_url }}">{{forloop.counter}}</a>{% else %}{{ task.process.pk }}/{{ task.pk }}{% endif %}
+                          </td>
+                          
+                          <td>{{ task.process }}</td>
+                          <td>{{ task.created }}</td>
+                          <td>{{ task.process.created_by }}</td>
+                          <td>{{ task.summary|default:task.flow_task }}</td>
+                         
+                        </tr>
+                        {% empty %}
+                        <tr>
+                          <td colspan="4">No Forms Submitted for approval</td>
+                        </tr>
+                        {% endfor %}
+                     
+                    </tbody>
+                  </table>
+
+          
+
+              </div>
+           
+
+       
+             
+      </div><!-- End recent sales --> 
+</div> 
+
+</div>      
+
+
+</section>
+</main><!-- End #main -->
+
+
+{%endblock content%}

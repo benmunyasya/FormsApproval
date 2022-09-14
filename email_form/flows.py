@@ -6,32 +6,26 @@ from viewflow.activation import STATUS
 from viewflow.base import Flow, this
 from viewflow.flow.views import CreateProcessView, UpdateProcessView
 from accounts.models import User
-from .models import  RMSGeneralInformationProcess
+from .models import Email_Request_Process
 from  django.urls import reverse_lazy
-from .forms import RMSForm
+from .forms import EmailRequestForm
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView,UpdateView,DeleteView
 from  django.urls import reverse_lazy
 from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import send_mail
-
-
-
-
-class RMS_ApplicationFlow(Flow):
-    process_class = RMSGeneralInformationProcess
+class EmailRequestFlow(Flow):
+    process_class = Email_Request_Process
+   
     
-    rms_start = (
+    email_start = (
         flow.Start(
            
             CreateProcessView,
-              
-              
-            form_class=RMSForm,
-           
-         
-         task_title="General Infomation"
+            form_class= EmailRequestForm,
+            task_title="Requested By:"
+
         ).Permission(
             auto_create=True
         ).Next(this.approve_by_HOD)
@@ -41,8 +35,8 @@ class RMS_ApplicationFlow(Flow):
 
     approve_by_HOD = flow.View(
         UpdateProcessView,
-        task_title="Department Head AUTHORIZATION",
-        form_class=RMSForm,
+        task_title="APPROVAL BY HEAD OF DEPARTMENT",
+        form_class=EmailRequestForm,
         
        
        
@@ -66,20 +60,20 @@ class RMS_ApplicationFlow(Flow):
     )
     approve_by_ICT = flow.View(
         UpdateProcessView,
-       # ICT_Authority_name = forms.CharField(widget=forms.TextInput(attrs={'readonly':'True'}))
-        task_title="ICT APPROVING AUTHORITY/DATA OWNER",
-        form_class=RMSForm,
-       # success_url = '/request_form/tasks',
+      
+        task_title="APPROVAL BY IT DEPARTMENT",
+        form_class=EmailRequestForm,
        
-       # fields=['ICT_Authority_name', 'ICT_Approve','ICTAuthority_email'],
        
-        task_result_summary="Request is {{ process.ICT_Approve|yesno:'Approved,Rejected' }} by ICT Authority ",
+       
+       
+        task_result_summary="Request is {{ process.IT_Approve|yesno:'Approved,Rejected' }} by IT Authority",
         
     ).Assign(
-        lambda act: User.objects.get(is_ICT_Authority=True)
+        lambda act: User.objects.get(username='bomware')
         ).Next(this.system_verify)
     system_verify = (
-        flow.If(lambda activation: activation.process.ICT_Approve)
+        flow.If(lambda activation: activation.process.IT_Approve)
         
 
        
@@ -88,26 +82,10 @@ class RMS_ApplicationFlow(Flow):
     )
     Email_Send = (
         flow.Handler(
-            this.send_form_complete_email
+            this.print_done
         ).Next(this.end)
     )
 
     end = flow.End()
-   
-    def send_form_complete_email(self, activation):
-           if activation.process.ICT_Approve == True :
-                current_process=RMSGeneralInformationProcess.objects.get(process_ptr_id=activation.process.id)
-                current_process.fully_approved=True
-                current_process.save()
-           print(f'{activation.process} finished')
-        # subject = activation.process
-        # message = 'Hi {user.username}, thank you for registering in geeksforgeeks.'
-        # email_from = settings.EMAIL_HOST_USER
-        # recipient_list = ['benngovi47@gmail.com' ]
-        # send_mail( subject, message, email_from, recipient_list )
-
-     
-            
-          
-            
-            
+    def print_done(self,activation):
+        print('hello')

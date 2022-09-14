@@ -1,0 +1,186 @@
+{% extends 'base.html' %}
+{%block content%}
+{% load crispy_forms_tags %}
+{% load viewflow %}
+{%load static%}
+
+{% include 'dashboard.html' %}
+<style>
+  .card1 {
+    width:50%;
+    
+}
+
+.card2 {
+    width:50%;
+   
+}
+</style>
+
+    
+
+
+
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title ">KENYA WILDLIFE SERVICE- 
+                EMAIL ADDRESS  SERVICE REQUEST FORM </h5>
+               
+               
+                
+                <form method='POST'class="row g-3" id='emailStart' onsubmit="return validateMyForm()">
+                  {%csrf_token%}
+
+                  <div class="card col-12" id="mainCard">
+                    <div class="card-body">
+                      <h5 class="card-title">SECTION I:REQUESTED BY:</h5>
+                    
+                      <div class="col-md-12">
+  
+                        {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
+                        {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.Nature_of_Request|as_crispy_field}}
+                    </div>
+                    {% comment %} designation','est_no','department','date_of_service_request','reasons_for_request' {% endcomment %}
+                    <div class="row">
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> Last  Name</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.full_name|as_crispy_field}}
+                      </div>
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> First  Name</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.designation|as_crispy_field}}
+                      </div>
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> Middle  Name</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.est_no|as_crispy_field}}
+                      </div>
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.department|as_crispy_field}}
+                      </div>
+                      <div class="col-md-12">
+                        {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.reasons_for_request|as_crispy_field}}
+                      </div>
+                      <div class="col-md-12">
+                        {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.date_of_service_request|as_crispy_field}}
+                      </div>
+                      
+                    </div>
+
+                    <div class="card col-12">
+                        <div class="card-body">
+                          <h5 class="card-title">SECTION IV: Department Head AUTHORIZATION</h5>
+                         
+                          <div class="row">
+                            <div class="col-md-4">
+                              
+                              {{form.HOD_name|as_crispy_field}}
+                            </div>
+                            <div class="col-md-4">
+                              
+                              {{form.HOD_approve|as_crispy_field}}
+                            </div>
+                           
+                            <div class="col-md-4" >
+                              
+                              {{form.HOD_email|as_crispy_field}}
+                            </div>
+                          </div>
+                          
+                        </div>
+                      </div>
+                    
+                      <div class="card col-12">
+                        <div class="card-body">
+                          <h5 class="card-title">SECTION IV: IT AUTHORIZATION</h5>
+                          <p class='strong'>This section is for Internal IT use only. To be filled in and returned within 24 hours of request 
+
+                            
+                            </p>
+                          <div class="row">
+                            <div class="col-md-4">
+                              
+                              {{form.IT_Authority_name |as_crispy_field}}
+                            </div>
+                            <div class="col-md-4" 
+                            >
+                            
+                              {{form.IT_Approve|as_crispy_field}}
+                            </div>
+                            
+                            <div class="col-md-4">
+                              
+                              {{form.ITAuthority_email|as_crispy_field}}
+                            </div>
+                          </div>
+                          <div class="row" id='ict_rejection_comments'>
+                                <div class="col-md-12">
+                                  {{form.email_assigned|as_crispy_field}}
+                                </div>
+                          </div>
+                        </div>
+                      </div>
+                    
+                   
+                   
+                   
+                    
+                   
+        
+                      
+                    </div>
+                  </div>
+                
+                  <hr>
+                
+                
+                  {{ activation.management_form}}
+                  <div class="col-12 d-flex justify-content-between text-center m-3 ">
+                    <button type="reset" class="btn btn-secondary btn-color">Reset</button>
+                    <button type="submit" name="_start" class="btn btn-primary btn-color"  id="submitbtn">Start Email Request workflow</button>
+
+                  </div>
+                </form>
+                
+        
+              
+              </div>
+            </div>
+
+      
+    
+  <script>
+  const btn = document.querySelector('#submitbtn');        
+  const radioButtons = document.querySelectorAll('input[name="gridRadios"]');
+  btn.addEventListener("click", () => {
+  const form  = document.getElementById('emailStart');
+      for (const radioButton of radioButtons) {
+          if (radioButton.checked) {
+              if (radioButton.value == 'notAgree'){
+                alert('YOU HAVE TO AGREE FIRST')
+                
+
+                form.addEventListener('submit', (event) => {
+                // handle the form data
+                event.preventDefault();
+                 });
+              }else if(radioButton.value == 'agree'){
+                confirm('Are you sure you want to submit your general info as it is.')
+              }
+              break;
+          }
+      }
+      
+      
+  }); 
+</script>
+{%endblock content%}
