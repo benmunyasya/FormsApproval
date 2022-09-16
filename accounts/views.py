@@ -26,7 +26,7 @@ def login(request):
         login(request, user)
         messages.success(request, "Login successful." )
         print(messages)
-        return render(request,'landing.html')
+        return render(request,'dashboard_home.html')
        
        
     else:

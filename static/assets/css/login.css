@@ -122,46 +122,7 @@ li {
 #loginlogo{
     height:80px;
   }
-.form-signin {
-   
-  width: 100%;
-  max-width: 300px;
-  height:300px;
-  padding: 15px;
-  margin:  auto;
-  transition: opacity .5s ease, transform 2s ease;
-}
 
-.form-signin .form-control {
-  position: relative;
-  box-sizing: border-box;
-  height: auto;
-  padding: 10px;
-  font-size: 16px;
-}
-.form-signin .form-control:focus {
-  z-index: 3;
-  outline:none;
-  border:none;
-  transition: .5s ease
-}
-.form-signin input[type="text"] {
-  margin-bottom: 1px;
-  border:none ;
-  outline-color: rgba(222, 236, 147, 0.8);
-  border-bottom: 3px solid rgba(78, 92, 7, 0.8);
- 
-}
-:focus{
-    outline:none;
-}
-.form-signin input[type="password"] {
-  margin-bottom: 0;
-  outline-color: rgba(222, 236, 147, 0.8);
-  border:none ;
-  border-bottom: 3px solid rgba(78, 92, 7, 0.8);
- 
-} 
 .form-signup input{
     outline-color: rgba(222, 236, 147, 0.8);
   border:none ;

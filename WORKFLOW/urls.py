@@ -20,10 +20,10 @@ from . import settings
 urlpatterns = [
     
    path('kingslandiuweoiqweoqwoiywersdhbnxchs21/', admin.site.urls),
-     path('',landing,name='landing'),
+    # path('',landing,name='landing'),
     
       
-     path('dashboard/',dashboard,name='dashboard'),
+     path('',dashboard,name='dashboard'),
       path('rms/', include('access.urls')),
      path('email/', include('email_form.urls')),
 

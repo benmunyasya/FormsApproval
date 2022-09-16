@@ -159,7 +159,7 @@ USE_TZ = True
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/accounts/login/' 
-LOGIN_REDIRECT_URL = 'landing'
+LOGIN_REDIRECT_URL = 'dashboard'
 STATIC_URL = '/static/'
 STATICFILES_DIRS=[
     BASE_DIR,'static/',
