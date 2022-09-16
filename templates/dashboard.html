@@ -144,10 +144,10 @@
         
       </li>
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="#Submittedforms" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#Submittedforms" data-bs-toggle="collapse" href="#" aria-controls="Submittedforms" aria-expanded="false" aria-label="Toggle navigation">
           <i class="bi bi-file-earmark-diff-fill"></i><span>Your Forms</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
-        <ul id="#Submittedforms" class="nav-content collapse " data-bs-parent="#sidebar-nav">
+        <ul id="Submittedforms" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
             <a href="{% url 'access:index'%}">
               <i class="bi bi-circle"></i><span>All Forms</span>
@@ -176,7 +176,7 @@
      
       
       <li class="nav-item">
-        <a class="nav-link collapsed" data-bs-target="Submittedtasks" data-bs-toggle="collapse" href="#">
+        <a class="nav-link collapsed" data-bs-target="#Submittedtasks" data-bs-toggle="collapse" href="#" >
           <i class="bi bi-list-nested"></i><span>Your Open Tasks <span class="badge badge-secondary badge-pill">{{inbox_count}}</span></span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="Submittedtasks" class="nav-content collapse" data-bs-parent="#sidebar-nav">
@@ -205,15 +205,7 @@
          
         </ul>
       </li><!-- End your forms nav Nav -->
-     
-      
-     
-              
-              
-              
-             
-     
-     
+   
         <li class="nav-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">WORKFLOWS</li>
 
         <li class="nav-item">
@@ -240,17 +232,14 @@
             <span>HRMIS ACCESS </span>
           </a>
         </li>
-     
-     
 
-   
-
-      
-
-    
     </ul>
 
 </aside>
 <script src="{% static '\assets\js\main.js' %}"></script>
+<script src="{% static '\assets\bootstrap\js\bootstrap.bundle.min.js' %}"></script>
+<script src="{% static '\assets\bootstrap\js\bootstrap.min.js' %}"></script>
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 </body> 
   {% endblock content %}

@@ -127,7 +127,8 @@
       font-weight: 800;
       letter-spacing: .05rem;
       color: #212529;
-      transition: .15s all
+      transition: .15s all;
+      padding:10px;
   }
   
   .masthead .masthead-cards .card:hover {

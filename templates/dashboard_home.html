@@ -5,13 +5,163 @@
 
 {% block content%}
 {% include 'dashboard.html' %}
+{% block css %} 
+    <link href="{% static 'assets\css\dashboard_home.css' %}" rel="stylesheet" type="text/css">
+{% endblock css %} 
 <main id="main" class="main">
     
    
 
-    <section class="section dashboard">
+   <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+      <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+      <!------ Include the above in your HEAD tag ---------->
       
-      <div class="row">
+      <!-- WORKFLOW-->
+      <section id="team" class="pb-5">
+          <div class="container">
+              <h5 class="section-title "> FORM APPROVAL WORKFLOWS</h5>
+              <div class="row">
+                  <!-- email-->
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                      <div class="image-flip" >
+                          <div class="mainflip flip-0">
+                              <div class="frontside">
+                                  <div class="card">
+                                      <div class="card-body text-center">
+                                          <p><i class="fa fa-envelope"></i></p>
+                                          <h4 class="card-title">KWS EMAIL ADDRESS-SERVICE REQUEST</h4>
+                                          <p class="card-text">Request a kws work email.</p>
+                                          <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="backside">
+                                  <div class="card">
+                                      <div class="card-body text-center mt-4">
+                                          <h4 class="card-title">KWS EMAIL ADDRESS-SERVICE REQUEST</h4>
+                                          <p class="card-text">Start your email application process.After Reading and Understanding the email policy you will fill your general information and the form will be forwarded to your department head for review.</p>
+                                          <a href="{% url 'email_form:email_start' %}" class="btn btn-primary btn-sm"><i class="fa fa-plus"> START WORKFLOW</i></a>
+                                      </div>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-xs-12 col-sm-6 col-md-4">
+                    <div class="image-flip" >
+                        <div class="mainflip flip-0">
+                            <div class="frontside">
+                                <div class="card">
+                                    <div class="card-body text-center">
+                                        <p><i class="fa fa-id-badge"></i></p>
+                                        <h4 class="card-title">KWS RMS ACCOUNT REQUISITION FORM</h4>
+                                        <p class="card-text">Request a RMS account and access</p>
+                                        <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="backside">
+                                <div class="card">
+                                    <div class="card-body text-center mt-4">
+                                        <h4 class="card-title">RMS ACCOUNT REQUISITION PROCESS</h4>
+                                        <p class="card-text">Start your RMS account requisition process.After Reading and Understanding the security agreement you will fill your general information and the form will be forwarded to your department head for review.</p>
+                                        <a href="{% url 'access:rms_start' %}" class="btn btn-primary btn-sm"><i class="fa fa-plus"> START WORKFLOW</i></a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                 </div>
+                 <div class="col-xs-12 col-sm-6 col-md-4">
+                  <div class="image-flip" >
+                      <div class="mainflip flip-0">
+                          <div class="frontside">
+                              <div class="card">
+                                  <div class="card-body text-center">
+                                      <p><i class="fa fa-id-badge"></i><i class="fa fa-users"></i></p>
+                                      <h4 class="card-title">KWS HRMIS USER request & Permission Form </h4>
+                                      <p class="card-text">This form is to request access to the KWS HRMIS Perpay System
+                                        on the KWS network.</p>
+                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="backside">
+                              <div class="card">
+                                  <div class="card-body text-center mt-4">
+                                      <h4 class="card-title">KWS HRMIS USER request & Permission Process</h4>
+                                      <p class="card-text">Start your HRMIS USER account requisition process.After Reading and Understanding the security agreement you will fill your general information and the form will be forwarded to your department head for review.</p>
+                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"> START WORKFLOW</i></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                 </div>
+                 <div class="col-xs-12 col-sm-6 col-md-4">
+                  <div class="image-flip" >
+                      <div class="mainflip flip-0">
+                          <div class="frontside">
+                              <div class="card">
+                                  <div class="card-body text-center">
+                                      <p><i class="fa fa-id-badge"></i><i class="fa fa-money"></i></p>
+                                      <h4 class="card-title">SunSystems New User Signup Request Form
+                                      </h4>
+                                      <p class="card-text">To be completed by new user of HQS’s accounting system</p>
+                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="backside">
+                              <div class="card">
+                                  <div class="card-body text-center mt-4">
+                                      <h4 class="card-title">SunSystems New User Signup Request  Process</h4>
+                                      <p class="card-text">Start your SunSystems New User Signup process. You will fill your general information and the form will be forwarded to your Unit head for review.</p>
+                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"> START WORKFLOW</i></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                 </div>
+                 <div class="col-xs-12 col-sm-6 col-md-4">
+                  <div class="image-flip" >
+                      <div class="mainflip flip-0">
+                          <div class="frontside">
+                              <div class="card">
+                                  <div class="card-body text-center">
+                                      <p><i class="fa fa-id-badge"></i><i class="fa fa-user"></i></p>
+                                      <h4 class="card-title">KWS ESMS USER Access Request & Permission Form
+                                      </h4>
+                                      <p class="card-text">This form is to request access to the KWS ESMS System on the
+                                        KWS network.</p>
+                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i></a>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="backside">
+                              <div class="card">
+                                  <div class="card-body text-center mt-4">
+                                      <h4 class="card-title">KWS ESMS USER Access Request & Permission Process</h4>
+                                      <p class="card-text">Start ESMS USER Access Request & Permission process. You will fill your general information and the form will be forwarded to your Unit head for review.</p>
+                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"> START WORKFLOW</i></a>
+                                  </div>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+                 </div>
+                 
+               
+      
+              </div>
+          </div>
+   
+      <!-- Team -->
+
+      
+      {% comment %} <div class="row">
 
         <!-- Left side columns -->
         <div class="col-lg-12">
@@ -67,7 +217,7 @@
         </div><!-- End Left side columns -->
        
       
-      </div>
+      </div> {% endcomment %}
     </section>
 
   </main><!-- End #main -->
