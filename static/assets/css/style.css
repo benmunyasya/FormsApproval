@@ -11,6 +11,11 @@
 :root {
   scroll-behavior: smooth;
 }
+.btn-primary {
+  color: #fff;
+  background-color: #007b5e !important;
+  border-color: #007b5e !important;
+}
 
 body {
   font-family: "Open Sans", sans-serif;
@@ -484,6 +489,7 @@ h1, h2, h3, h4, h5, h6 {
   font-weight: normal;
   font-size: 11px;
   padding: 3px 6px;
+ 
 }
 .header-nav .notifications .notification-item {
   display: flex;
@@ -726,6 +732,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 .sidebar-nav .nav-content a:hover, .sidebar-nav .nav-content a.active {
   color: rgba(78, 92, 7, 0.8);
+  
 }
 .sidebar-nav .nav-content a.active i {
   background-color: rgba(78, 92, 7, 0.8);

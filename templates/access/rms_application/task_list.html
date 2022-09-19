@@ -27,21 +27,10 @@
 <div class="col-12 col-md-12 col-xs-12">
       <div class="card recent-sales">
 
-              <div class="filter">
-                  <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                  <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                    <li class="dropdown-header text-start">
-                      <h6>Filter</h6>
-                    </li>
-
-                    <li><a class="dropdown-item" href="#">Today</a></li>
-                    <li><a class="dropdown-item" href="#">This Month</a></li>
-                    <li><a class="dropdown-item" href="#">This Year</a></li>
-                  </ul>
-              </div>
+             
 
               <div class="card-body">
-                  <h5 class="card-title">Request  List<span>| All</span></h5>
+                  <h5 class="card-title">Open  Tasks<span>| All</span></h5>
 
                   <table id="formlist" class="table datatable   table-border table-sm  table-responsive " cellspacing="0"
                   width="100% ">
@@ -75,7 +64,7 @@
                         </tr>
                         {% empty %}
                         <tr>
-                          <td colspan="4">No Forms Submitted for approval</td>
+                          <td colspan="4">No RMS account requisition Tasks assigned to you currently</td>
                         </tr>
                         {% endfor %}
                      

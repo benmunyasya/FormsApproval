@@ -42,6 +42,7 @@
     })
   }
   
+  
 
   /**
    * Search bar toggle

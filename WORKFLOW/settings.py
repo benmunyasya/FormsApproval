@@ -29,7 +29,7 @@ SECRET_KEY = 1#os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-ALLOWED_HOSTS = ['*','localhost','127.0.0.1','172.16.1.9','VIRTUAL.kws.local','172.16.4.160']
+ALLOWED_HOSTS = ['*','localhost','127.0.0.1','172.16.1.9','VIRTUAL.kws.local','172.16.4.160','192.168.173.1']
 #SESSION_COOKIE_SECURE=True
 #CSRF_COOKIE_SECURE=True
 
@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'accounts',
     'access',
+    'core',
     'email_form',
     'viewflow',
     'crispy_forms',
@@ -86,7 +87,7 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-                 'access.context_processors.tasks_counts',
+                 'core.context_processors.tasks_counts',
             ],
         },
     },

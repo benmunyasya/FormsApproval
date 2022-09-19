@@ -8,6 +8,7 @@ class RMSForm(forms.ModelForm):
     def __init__(self, *args, **kwargs):
         super(RMSForm, self).__init__(*args, **kwargs)
         
+        
     class Meta:
         model = RMSGeneralInformationProcess
         fields=['request_type', 'last','first','middle','salutation','user_type','temporary_staff','est_no','email','mobile_no',
@@ -26,6 +27,7 @@ class RMSForm(forms.ModelForm):
 
             
         }
+        
 
 
             

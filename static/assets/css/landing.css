@@ -196,12 +196,15 @@
   }
   .btn-color{
     border-radius: 50px;
-  color: #fff;
-  background:  rgba(102,118,24,1.0);
+  color: black;
+  width:100%;
+  max-width:100px;
+  background:  #ffc107!important;
   padding: 15px;
   cursor: pointer;
   border: none !important;
   margin-top: 20px;
+ align-self: center;
 }
   .form-signin label{
     color:#ffc107!important;

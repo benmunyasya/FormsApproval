@@ -137,7 +137,7 @@
               {% if task.status == 'DONE' %}
               <li class="step0 active " id="step1">{{ task.summary|default:task.flow_task  }}</li>
               {% else %}
-              <li class="step0 text-right" id="step4">{{ task.summary|default:task.flow_task }}</li>
+              <li class="step0 text-right" id="step4">{{ task.summary|default:task.flow_task }}(Pending)</li>
               {% endif %}
               {% endfor %}
                  
