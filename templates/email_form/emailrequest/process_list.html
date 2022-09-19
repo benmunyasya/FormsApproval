@@ -8,17 +8,17 @@
 {% include 'dashboard.html' %}
 <main id="main" class="main">
   <div class="row">
-  <div class="pagetitle col-8">
-    <h1>Forms  you have  submitted for approval</h1>
-    {% comment %} <nav>
-      <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-        <li class="breadcrumb-item active">Request forms</li>
-      </ol>
-    </nav> {% endcomment %}
-  </div><!-- End Page Title -->
-  
-</div>
+    <div class="pagetitle col-8">
+      <h1>Forms  you have  submitted for approval</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item active">Email address Service Requests</li>
+        </ol>
+      </nav> 
+    </div><!-- End Page Title -->
+    
+  </div>
 <section class="section dashboard">
     
    

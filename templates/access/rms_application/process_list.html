@@ -6,16 +6,17 @@
 
 {% block content%}
 {% include 'dashboard.html' %}
+
 <main id="main" class="main">
   <div class="row">
   <div class="pagetitle col-8">
     <h1>Forms  you have  submitted for approval</h1>
-    {% comment %} <nav>
+    <nav>
       <ol class="breadcrumb">
-        <li class="breadcrumb-item"><a href="">Dashboard</a></li>
-        <li class="breadcrumb-item active">Request forms</li>
+        <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+        <li class="breadcrumb-item active">RMS account requisitions</li>
       </ol>
-    </nav> {% endcomment %}
+    </nav> 
   </div><!-- End Page Title -->
   
 </div>
@@ -68,7 +69,7 @@
                       {% if process.created_by == request.user %}
                       <tr>
                         <td>
-                          <a href="{% url 'access:detail' process.pk %}">{{forloop.counter }}</a>                        
+                          <a href="{% url 'access:detail' process.pk %}">{{forloop.counter }}-View Details</a>                        
                         </td>
                         <td> {{ view.flow_class }} </td>
                         <td>{{ process.request_type }}</td>

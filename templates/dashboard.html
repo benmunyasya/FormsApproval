@@ -154,7 +154,7 @@
             </a>
           </li>
           <li>
-            <a href="">
+            <a href="{% url 'newusersunsystem:index'%}">
               <i class="bi bi-circle"></i><span>New User Sunsystem</span>
             </a>
           </li>
@@ -186,8 +186,8 @@
             </a>
           </li>
           <li>
-            <a href="">
-              <i class="bi bi-circle"></i><span>SunSystem forms</span><span class="badge rounded-pill bg-success p-2 ms-2">0</span>
+            <a href="{% url 'newusersunsystem:tasks'%}">
+              <i class="bi bi-circle"></i><span>New User SunSystem forms</span><span class="badge rounded-pill bg-success p-2 ms-2">{{new_user_sunsystem_inbox_count}}</span>
             </a>
           </li>
          
@@ -211,9 +211,9 @@
           </a>
         </li>
         <li class="nav-item">
-          <a class="nav-link collapsed" href="#">
+          <a class="nav-link collapsed" href="{% url 'newusersunsystem:newusersunsystem_start'%}">
             <i class="bi bi-file-earmark-break-fill"></i>
-            <span>SUNSYSTEM ACCESS </span><i class="bi bi-plus fw-bold"></i>
+            <span>NEW USER SUNSYSTEM ACCESS </span><i class="bi bi-plus fw-bold"></i>
           </a>
         </li>
         <li class="nav-item">

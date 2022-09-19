@@ -1,0 +1,96 @@
+
+
+{% extends 'base.html' %}
+{%block content%}
+{% load crispy_forms_tags %}
+{% load viewflow %}
+{%load static%}
+{% include 'dashboard.html' %}
+
+
+<main id="main" class="main">
+  <div class="row">
+    <div class="pagetitle col-8">
+      <h1>New user sunsystem account requests assigned to you</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item active">New user sunsystem account requests tasks</li>
+        </ol>
+      </nav> 
+    </div><!-- End Page Title -->
+    
+  </div>
+<section class="section dashboard">
+    
+   
+
+      
+      
+<div class="row"> 
+   
+<div class="col-12 col-md-12 col-xs-12">
+      <div class="card recent-sales">
+
+             
+
+              <div class="card-body">
+                  <h5 class="card-title">Open  Tasks<span>| All</span></h5>
+
+                  <table id="formlist" class="table datatable   table-border table-sm  table-responsive " cellspacing="0"
+                  width="100% ">
+                    <thead>
+                      <tr>
+                       
+                        <th scope="col">Request No</th>
+                   
+                    <th scope="col">Form</th>
+                   
+                        <th scope="col">Submitted On</th>
+                        <th scope="col">Request From</th>
+                        <th scope="col">Description</th>
+                       
+                        
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {% for task in task_list %}
+                        {% flowurl task user=request.user as task_url %}
+                        <tr>
+                          <td>
+                            {% if task_url %}<a href="{{ task_url }}">{{forloop.counter}}</a>{% else %}{{ task.process.pk }}/{{ task.pk }}{% endif %}
+                          </td>
+                          
+                          <td>{{ task.process }}</td>
+                          <td>{{ task.created }}</td>
+                          <td>{{ task.process.created_by }}</td>
+                          <td>{{ task.summary|default:task.flow_task }}</td>
+                         
+                        </tr>
+                        {% empty %}
+                        <tr>
+                          <td colspan="4">No New user sunsytem request Tasks assigned to you currently</td>
+                        </tr>
+                        {% endfor %}
+                     
+                    </tbody>
+                  </table>
+
+          
+
+              </div>
+           
+
+       
+             
+      </div><!-- End recent sales --> 
+</div> 
+
+</div>      
+
+
+</section>
+</main><!-- End #main -->
+
+
+{%endblock content%}

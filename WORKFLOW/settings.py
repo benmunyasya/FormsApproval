@@ -14,8 +14,8 @@ from pathlib import Path
 import os
 import mimetypes
 mimetypes.add_type("text/css", ".css", True)
-#import ldap
-#from django_auth_ldap.config import LDAPSearch,logging
+import ldap
+from django_auth_ldap.config import LDAPSearch,logging
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -25,10 +25,10 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 1#os.environ['SECRET_KEY']
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG =True
 ALLOWED_HOSTS = ['*','localhost','127.0.0.1','172.16.1.9','VIRTUAL.kws.local','172.16.4.160','192.168.173.1']
 #SESSION_COOKIE_SECURE=True
 #CSRF_COOKIE_SECURE=True
@@ -48,6 +48,7 @@ INSTALLED_APPS = [
     'email_form',
     'viewflow',
     'crispy_forms',
+    'newusersunsystem',
    # 'allauth',
    #'allauth.account',
    # 'allauth.socialaccount',
@@ -79,7 +80,8 @@ TEMPLATES = [
         os.path.join(BASE_DIR, 'templates/access'),
         os.path.join(BASE_DIR, 'templates/accounts'),
         os.path.join(BASE_DIR, 'templates/access/rms_application'),
-         os.path.join(BASE_DIR, 'templates/email_form/emailrequest')],
+         os.path.join(BASE_DIR, 'templates/email_form/emailrequest'),
+          os.path.join(BASE_DIR, 'templates/newusersunsystem/newusersunsystem'),],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -93,7 +95,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'WORKFLOW.wsgi.application'
+WSGI_APPLICATION = 'wsgi_windows.wsgi.application'
 
 
 DATABASES = {
@@ -101,7 +103,7 @@ DATABASES = {
        'ENGINE': 'django.db.backends.postgresql',
        'NAME': 'form_access_db',
        'USER': 'postgres',
-       'PASSWORD':'toor',#os.environ['DATABASE_PASSWORD'],
+       'PASSWORD':os.environ['DATABASE_PASSWORD'],
        'HOST': '127.0.0.1',
        'PORT': 5432,
 
@@ -109,7 +111,7 @@ DATABASES = {
 }
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 AUTHENTICATION_BACKENDS = [
-    #'django_auth_ldap.backend.LDAPBackend',
+    'django_auth_ldap.backend.LDAPBackend',
   'django.contrib.auth.backends.ModelBackend',
     #'allauth.account.auth_backends.AuthenticationBackend',
 ]
@@ -148,11 +150,11 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
-#STATIC_URL = '/static/'
+STATIC_URL = '/static/'
 
-#STATIC_ROOT=os.path.join(BASE_DIR,'static')
+STATIC_ROOT=os.path.join(BASE_DIR,'static')
 #STATICFILES_DIRS = [os.path.join(BASE_DIR, 'static'),os.path.join(BASE_DIR, 'static/assets/bootstrap')]
-#COLLECTSTATIC=1
+COLLECTSTATIC=1
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -161,10 +163,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 LOGOUT_REDIRECT_URL = '/accounts/login/' 
 LOGIN_REDIRECT_URL = 'dashboard'
-STATIC_URL = '/static/'
-STATICFILES_DIRS=[
-    BASE_DIR,'static/',
-    ]
+
 
 #LOGIN_ATTEMPTS=3
 #ACCOUNT_FORMS={
@@ -173,31 +172,31 @@ STATICFILES_DIRS=[
 
 
 
-# AUTH_LDAP_SERVER_URI ='ldap://172.16.1.2:3268'
-# AUTH_LDAP_ALWAYS_UPDATE_USER = True
-# AUTH_LDAP_BIND_DN = "ldapauth@KWS.local"
-# AUTH_LDAP_BIND_PASSWORD ='w!ldl!f3y3tu'
+AUTH_LDAP_SERVER_URI ='ldap://172.16.1.2:3268'
+AUTH_LDAP_ALWAYS_UPDATE_USER = True
+AUTH_LDAP_BIND_DN = "ldapauth@KWS.local"
+AUTH_LDAP_BIND_PASSWORD ='w!ldl!f3y3tu'
 
-# AUTH_LDAP_USER_SEARCH = LDAPSearch(
-#     "dc=KWS,dc=local", ldap.SCOPE_SUBTREE,"sAMAccountName=%(user)s"
-# )
+AUTH_LDAP_USER_SEARCH = LDAPSearch(
+    "dc=KWS,dc=local", ldap.SCOPE_SUBTREE,"sAMAccountName=%(user)s"
+)
 
 
-# AUTH_LDAP_USER_ATTR_MAP = {
-# "username": "sAMAccountName",
-# "password": "userPassword"
-# }
-# AUTH_LDAP_USER_ATTR_MAP = {
+AUTH_LDAP_USER_ATTR_MAP = {
+"username": "sAMAccountName",
+"password": "userPassword"
+}
+AUTH_LDAP_USER_ATTR_MAP = {
     
-#     "username": "sAMAccountName",
-#     "first_name": "givenName",
-#     "last_name": "sn",
-#     "email": "mail",
-# }
+    "username": "sAMAccountName",
+    "first_name": "givenName",
+    "last_name": "sn",
+    "email": "mail",
+}
 
-# LOGGING = {
-#     "version": 1,
-#     "disable_existing_loggers": False,
-#     "handlers": {"console": {"class": "logging.StreamHandler"}},
-#     "loggers": {"django_auth_ldap": {"level": "DEBUG", "handlers": ["console"]}},
-# }
+LOGGING = {
+    "version": 1,
+    "disable_existing_loggers": False,
+    "handlers": {"console": {"class": "logging.StreamHandler"}},
+    "loggers": {"django_auth_ldap": {"level": "DEBUG", "handlers": ["console"]}},
+}

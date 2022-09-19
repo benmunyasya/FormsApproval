@@ -19,13 +19,14 @@ from core.views import dashboard
 from . import settings
 urlpatterns = [
     
-   path('kingslandiuweoiqweoqwoiywersdhbnxchs21/', admin.site.urls),
+  path('kingslandiuweoiqweoqwoiywersdhbnxchs21/', admin.site.urls),
     # path('',landing,name='landing'),
     
       
      path('',dashboard,name='dashboard'),
       path('rms/', include('access.urls')),
      path('email/', include('email_form.urls')),
+      path('newusersunsystem/', include('newusersunsystem.urls')),
 
     path('accounts/', include('django.contrib.auth.urls')),
 ]

@@ -58,7 +58,33 @@
       background-size: cover;
       z-index: 0
   }
-  
+  @media screen and (min-width: 1300px) {
+    .container {
+      width: 1370px;
+    }
+    .masthead{
+      height:600px;
+    }
+  }
+  @media screen and (min-width: 1600px) {
+    .container {
+      width: 1800px;
+      
+    }
+    .masthead{
+      height: 800px;
+     
+    }
+  }
+  @media screen and (min-width: 1900px) {
+    .container {
+      width: 1870px;
+     
+    }
+    .masthead{
+      height: 800px;
+    }
+  }
   .masthead svg.wave {
       position: absolute;
       bottom: -1px;

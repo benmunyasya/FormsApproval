@@ -10,7 +10,13 @@
 {% endblock css %} 
 <main id="main" class="main">
     
-   
+    <div class="row">
+        <div class="pagetitle col-8">
+          <h1>Home</h1>
+         
+        </div><!-- End Page Title -->
+        
+      </div>
 
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
@@ -19,7 +25,7 @@
       
       <!-- WORKFLOW-->
       <section id="team">
-          <div class="container">
+          <div class="container-fluid">
               <h5 class="section-title "> FORM APPROVAL WORKFLOWS</h5>
               <div class="row">
                   <!-- email-->
@@ -92,7 +98,7 @@
                                   <div class="card-body text-center mt-4">
                                       <h4 class="card-title">KWS HRMIS USER request & Permission Process</h4>
                                       <p class="card-text">Start your HRMIS USER account requisition process.After Reading and Understanding the security agreement you will fill your general information and the form will be forwarded to your department head for review.</p>
-                                      <a href="#" class="btn btn-primary btn-sm"><i class="fa fa-plus"> START WORKFLOW</i></a>
+                                      <a href="#" class="btn btn-primary btn-sm"> START WORKFLOW</i></a>
                                   </div>
                               </div>
                           </div>
@@ -105,7 +111,7 @@
                           <div class="frontside">
                               <div class="card">
                                   <div class="card-body text-center">
-                                      <p><i class="fa fa-id-badge"></i><i class="fa fa-money"></i></p>
+                                      <p><i class="fa fa-id-badge"></i></p>
                                       <h4 class="card-title">SunSystems New User Signup Request Form
                                       </h4>
                                       <p class="card-text">To be completed by new user of HQS’s accounting system</p>
@@ -118,7 +124,7 @@
                                   <div class="card-body text-center mt-4">
                                       <h4 class="card-title">SunSystems New User Signup Request  Process</h4>
                                       <p class="card-text">Start your SunSystems New User Signup process. You will fill your general information and the form will be forwarded to your Unit head for review.</p>
-                                      <a href="#" class="btn btn-primary btn-sm"> START WORKFLOW</i></a>
+                                      <a href="{% url 'newusersunsystem:newusersunsystem_start' %}" class="btn btn-primary btn-sm"> START WORKFLOW</i></a>
                                   </div>
                               </div>
                           </div>

@@ -1,0 +1,205 @@
+{% extends 'base.html' %}
+{%block content%}
+{% load crispy_forms_tags %}
+{% load viewflow %}
+{%load static%}
+
+{% include 'dashboard.html' %}
+<style>
+  .card1 {
+    width:50%;
+    
+}
+
+.card2 {
+    width:50%;
+   
+}
+</style>
+<main id="main" role="main" class="main">
+  <div class="row">
+    <div class="pagetitle col-8">
+      <h1>Start New user sunsystem request</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item active">New user sunsystem Request Form</li>
+        </ol>
+      </nav> 
+    </div><!-- End Page Title -->
+    
+  </div>
+    <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pb-2 mb-3 border-bottom">
+      <section class="section">
+        <div class="row">
+          <div class="col-lg-12">
+
+
+
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title ">KENYA WILDLIFE SERVICE<br>
+                    SunSystems New User Signup Request Form</h5>
+               
+               
+                
+                <form method='POST'class="row g-3" id='emailStart' onsubmit="return validateMyForm()">
+                  {%csrf_token%}
+
+                  <div class="card col-12" id="mainCard">
+                    <div class="card-body">
+                      <h5 class="card-title">To be completed by new user of HQS’s accounting system</h5>
+                    
+                    
+                    {% comment %} designation','est_no','department','date_of_service_request','reasons_for_request' {% endcomment %}
+                    <div class="row">
+                      <div class="col-md-6">
+  
+                        {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
+                        {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.User_Name|as_crispy_field}}
+                    </div>
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> Last  Name</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.Initials|as_crispy_field}}
+                      </div>
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> First  Name</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.est_no|as_crispy_field}}
+                      </div>
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> Middle  Name</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.department|as_crispy_field}}
+                      </div>
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.Surname|as_crispy_field}}
+                      </div>
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.section|as_crispy_field}}
+                      </div>
+                      <div class="col-md-6">
+                        {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                        <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.Station_Park|as_crispy_field}}
+                      </div>
+                     
+                     
+                    
+                      
+                    </div>
+                  </div>
+                </div>
+                    <div class="card col-12">
+                      <div class="card-body">
+                        <h5 class="card-title">SECTION II: Unit Head AUTHORIZATION</h5>
+                        <p class='strong'>
+                          To be completed by Unit Head.
+                          I am recommending the above named person to be created as a new user in the HQS LAN
+                          accounting system
+                          
+                          
+                          </p>
+                        <div class="row">
+                          <div class="col-md-4">
+                            {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                            {{form.Unit_Head_Name|as_crispy_field}}
+                          </div>
+                          <div class="col-md-4">
+                            {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                            {{form.Unit_Head_Title|as_crispy_field}}
+                          </div>
+                         
+                          <div class="col-md-4">
+                            {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                            {{form.Unit_Head_Email|as_crispy_field}}
+                          </div>
+                        </div>
+                        
+                      </div>
+                     </div>
+
+                  
+                 
+                 
+                 
+                  
+                 
+      
+                    
+                    </div>
+                   
+                   
+                   
+                    
+                   
+        
+                      
+                    </div>
+                  </div>
+                
+                  <hr>
+                
+                
+                  {{ activation.management_form}}
+                  <div class="col-12 d-flex justify-content-between text-center m-3 ">
+                    <button type="reset" class="btn btn-secondary btn-color">Reset</button>
+                    <button type="submit" name="_start" class="btn btn-primary btn-color"  id="submitbtn">Start New User Sunsystem workflow</button>
+
+                  </div>
+                </form>
+                
+        
+              
+              </div>
+            </div>
+
+          </div>
+
+
+        </div>
+      </section>
+
+
+
+    </div>
+
+
+
+
+  </main>
+  <script>
+  const btn = document.querySelector('#submitbtn');        
+  const radioButtons = document.querySelectorAll('input[name="gridRadios"]');
+  btn.addEventListener("click", () => {
+  const form  = document.getElementById('emailStart');
+      for (const radioButton of radioButtons) {
+          if (radioButton.checked) {
+              if (radioButton.value == 'notAgree'){
+                alert('YOU HAVE TO AGREE FIRST')
+                
+
+                form.addEventListener('submit', (event) => {
+                // handle the form data
+                event.preventDefault();
+                 });
+              }else if(radioButton.value == 'agree'){
+                confirm('Are you sure you want to submit your general info as it is.')
+              }
+              break;
+          }
+      }
+      
+      
+  }); 
+</script>
+{%endblock content%}

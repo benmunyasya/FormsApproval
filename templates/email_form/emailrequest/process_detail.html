@@ -111,7 +111,19 @@
 
 </style>
 <main id="main" class="main">
- 
+  <div class="row">
+    <div class="pagetitle col-8">
+      <h1>Email address Service Request details</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
+          <li class="breadcrumb-item"><a href="{% url 'email_form:index' %}">Email address Service Requests</a></li>
+          <li class="breadcrumb-item active">{{process}} workflow details</li>
+        </ol>
+      </nav> 
+    </div><!-- End Page Title -->
+    
+  </div>
 <section class="section dashboard">
     
    
@@ -162,7 +174,7 @@
               </div>
 
               <div class="card-body">
-                  <h5 class="card-title">Request  List<span>| All</span></h5>
+                  <h5 class="card-title">Current Workflow Tasks<span>| All</span></h5>
 
                   <table id="formlist" class="table datatable table-responsive table-border table-sm" cellspacing="0"
                   width="100% ">
