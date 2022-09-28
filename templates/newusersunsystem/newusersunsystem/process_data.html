@@ -17,70 +17,108 @@
 }
 </style>
 
-    
 
 
 
-            <div class="card">
+            <div class="card" id="mainCard">
               <div class="card-body">
-                <h5 class="card-title ">KENYA WILDLIFE SERVICE- 
-                EMAIL ADDRESS  SERVICE REQUEST FORM </h5>
+                <h5 class="card-title text-center">KENYA WILDLIFE SERVICE<br>
+                    SunSystems New User Signup Request Form</h5>
                
                
                 
-                <form method='POST'class="row g-3" id='emailStart' onsubmit="return validateMyForm()">
+                <form method='POST'class="row g-3" id='newuserStart' onsubmit="return validateMyForm()">
                   {%csrf_token%}
 
-                  <div class="card col-12" id="mainCard">
+                  <div class="card col-12" >
                     <div class="card-body">
-                      <h5 class="card-title">SECTION I:REQUESTED BY:</h5>
+                      <h5 class="card-title">To be completed by new user of HQS’s accounting system</h5>
                     
-                      <div class="col-md-12">
-  
-                        {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
-                        {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
-                        {{form.Nature_of_Request|as_crispy_field}}
-                    </div>
+                    
                     {% comment %} designation','est_no','department','date_of_service_request','reasons_for_request' {% endcomment %}
                     <div class="row">
                       <div class="col-md-6">
+  
+                        {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
+                        {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                        {{form.User_Name|as_crispy_field}}
+                    </div>
+                      <div class="col-md-6">
                         {% comment %} <label for="inputName5" class="form-label"> Last  Name</label>
                         <input type="text" class="form-control" id="inputName5"> {% endcomment %}
-                        {{form.full_name|as_crispy_field}}
+                        {{form.Initials|as_crispy_field}}
                       </div>
                       <div class="col-md-6">
                         {% comment %} <label for="inputName5" class="form-label"> First  Name</label>
                         <input type="text" class="form-control" id="inputName5"> {% endcomment %}
-                        {{form.designation|as_crispy_field}}
+                        {{form.est_no|as_crispy_field}}
                       </div>
                       <div class="col-md-6">
                         {% comment %} <label for="inputName5" class="form-label"> Middle  Name</label>
                         <input type="text" class="form-control" id="inputName5"> {% endcomment %}
-                        {{form.est_no|as_crispy_field}}
+                        {{form.department|as_crispy_field}}
                       </div>
                       <div class="col-md-6">
                         {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
                         <input type="text" class="form-control" id="inputName5"> {% endcomment %}
-                        {{form.department|as_crispy_field}}
+                        {{form.Surname|as_crispy_field}}
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-6">
                         {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
                         <input type="text" class="form-control" id="inputName5"> {% endcomment %}
-                        {{form.reasons_for_request|as_crispy_field}}
+                        {{form.section|as_crispy_field}}
                       </div>
-                      <div class="col-md-12">
+                      <div class="col-md-6">
                         {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
                         <input type="text" class="form-control" id="inputName5"> {% endcomment %}
-                        {{form.date_of_service_request|as_crispy_field}}
+                        {{form.Station_Park|as_crispy_field}}
                       </div>
-                      
                     </div>
-                  </div>
-
-                    <div class="card col-12">
+                </div>
+                      <div class="card col-12">
                         <div class="card-body">
-                          <h5 class="card-title">SECTION IV: Department Head AUTHORIZATION</h5>
-                         
+                          <h5 class="card-title">SECTION II: Unit Head AUTHORIZATION</h5>
+                          <p class='strong'>
+                            To be completed by Unit Head.
+                            I am recommending the above named person to be created as a new user in the HQS LAN
+                            accounting system
+                            
+                            
+                            </p>
+                          <div class="row">
+                            <div class="col-md-4">
+                              {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                              <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                              {{form.Unit_Head_Name|as_crispy_field}}
+                            </div>
+                            <div class="col-md-4">
+                              {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                              <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                              {{form.Unit_Head_Title|as_crispy_field}}
+                            </div>
+                           
+                            <div class="col-md-4">
+                              {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+                              <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                              {{form.Unit_Head_Email|as_crispy_field}}
+                            </div>
+                          </div>
+                          
+                        </div>
+                       </div>
+  
+                    
+                   
+                   
+             </div>
+                      <div class="card col-12">
+                        <div class="card-body">
+                          <h5 class="card-title">SECTION III: Department Head AUTHORIZATION</h5>
+                          <p class='strong'>I am recommending the above named person to be created in the Financial
+                            system. The user should be put in the (FINMG, SYSAC, U/HEAD, ACCTS, OPS, SUH.)
+                            
+                            
+                            </p>
                           <div class="row">
                             <div class="col-md-4">
                               
@@ -98,38 +136,8 @@
                           </div>
                           
                         </div>
-                      </div>
-                    
-                      <div class="card col-12">
-                        <div class="card-body">
-                          <h5 class="card-title">SECTION IV: IT AUTHORIZATION</h5>
-                          <p class='strong'>This section is for Internal IT use only. To be filled in and returned within 24 hours of request 
+                       </div>
 
-                            
-                            </p>
-                          <div class="row">
-                            <div class="col-md-4">
-                              
-                              {{form.IT_Authority_name |as_crispy_field}}
-                            </div>
-                            <div class="col-md-4" 
-                            >
-                            
-                              {{form.IT_Approve|as_crispy_field}}
-                            </div>
-                            
-                            <div class="col-md-4">
-                              
-                              {{form.ITAuthority_email|as_crispy_field}}
-                            </div>
-                          </div>
-                          <div class="row" id='ict_rejection_comments'>
-                                <div class="col-md-12">
-                                  {{form.email_assigned|as_crispy_field}}
-                                </div>
-                          </div>
-                        </div>
-                      </div>
                     
                    
                    
@@ -138,7 +146,43 @@
                    
         
                       
-                    </div>
+                      </div>
+                      <div class="card col-12">
+                        <div class="card-body">
+                          <h5 class="card-title">SECTION IV: FOR IT USE</h5>
+                         
+                          <div class="row">
+                            <div class="col-md-3">
+                              
+                              {{form.Checked_by|as_crispy_field}}
+                            </div>
+                            <div class="col-md-3">
+                              
+                              {{form.Created|as_crispy_field}}
+                            </div>
+                           
+                            <div class="col-md-3" >
+                              
+                              {{form.Expiry|as_crispy_field}}
+                            </div>
+                            <div class="col-md-3" >
+                              
+                                {{form.Expiry_Date|as_crispy_field}}
+                              </div>
+                          </div>
+                          
+                        </div>
+                       </div>
+
+                    
+                   
+                   
+                   
+                    
+                   
+        
+                      
+                      </div>
                   </div>
                 
                   <hr>
@@ -147,7 +191,7 @@
                   {{ activation.management_form}}
                   <div class="col-12 d-flex justify-content-between text-center m-3 ">
                     <button type="reset" class="btn btn-secondary btn-color">Reset</button>
-                    <button type="submit" name="_start" class="btn btn-primary btn-color"  id="submitbtn">Complete Task</button>
+                    <button type="submit" name="_start" class="btn btn-primary btn-color"  id="submitbtn">Complete Task </button>
 
                   </div>
                 </form>
@@ -157,8 +201,7 @@
               </div>
             </div>
 
-      
-    
+        
   <script>
   const btn = document.querySelector('#submitbtn');        
   const radioButtons = document.querySelectorAll('input[name="gridRadios"]');

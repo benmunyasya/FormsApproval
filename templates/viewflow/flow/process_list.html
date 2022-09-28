@@ -8,12 +8,12 @@
 {% include 'dashboard.html' %}
 <main id="main" class="main">
   <div class="row">
-    <div class="pagetitle col-8">
+    <div class="pagetitle col-12">
       <h1>Forms  you have  submitted for approval</h1>
       <nav>
         <ol class="breadcrumb">
           <li class="breadcrumb-item"><a href="{% url 'dashboard' %}">Home</a></li>
-          <li class="breadcrumb-item active">New user sunsystem requests</li>
+          <li class="breadcrumb-item active">{{flow_class}} Requests you have Submiited</li>
         </ol>
       </nav> 
     </div><!-- End Page Title -->
@@ -46,15 +46,15 @@
               <div class="card-body">
                   <h5 class="card-title">Request  List<span>| All</span></h5>
 
-                  <table id="formlist" class="table datatable  table-border table-sm col table-responsive " cellspacing="0"
+                  <table id="formlist" class="table table-responsive  datatable  table-border table-sm " cellspacing="0"
                   width="100% ">
                     <thead>
                       <tr>
                        
                         <th scope="col">#</th>
                         <th scope="col">Application Type</th>
-                        <th scope="col">Request Type</th>
-                        <th scope="col">Pending Approval</th>
+                        
+                      
                         
                         
                         <th scope="col">Finished on</th>
@@ -65,20 +65,19 @@
                     </thead>
                     <tbody>
                       {% for process in process_list %}
-                      {% if process.created_by == request.user %}
+                      {% if process.created_by == request.user or user.is_Department_Head_Authority or user.is_ICT_Authority %}
                       <tr>
                         <td>
-                          <a href="{% url 'newusersunsystem:detail' process.pk %}">{{forloop.counter }}</a>                        
+                          <a href="{% flowurl process 'detail' %}">{{forloop.counter }}-View Details</a>                        
                         </td>
-                        <td> {{ view.flow_class }} </td>
-                        <td>{{ process.request_type }}</td>
-                        <td>{{ process.active_tasks.count }}</td>
-                        
+                        <td> {{process}} </td>
+                       
+                      
                         <td>
-                          {%if process.finished == None %}
+                          {% if process.finished == None %}
                             Not Done
-                          {%else%}
-                          <span class="badge badge-success">{{ process.finished}}</span>
+                          {% else %}
+                          Process Completed
                           {% endif %}
                         </td> 
 

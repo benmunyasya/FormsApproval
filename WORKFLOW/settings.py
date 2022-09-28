@@ -90,6 +90,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                  'core.context_processors.tasks_counts',
+                  'core.context_processors.resolver_context_processor',
             ],
         },
     },

@@ -1,136 +1,268 @@
+{% load crispy_forms_tags %}
+<div class="card" id="mainCard">
+    <div class="card-body">
+      <h5 class="card-title text-center">REVENUE MANAGEMENT SYSTEM ACCOUNT REQUISITION FORM</h5>
+      <p class='strong text-center'>NOTE:For instructions on completing this form; as well as, user requirements, please see down below.
 
- 
-    {% comment %} <div class="col-md-12 order-md-2 mb-4">
+        </p>
+     
       
-      <ul class="list-group mb-3">
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0"> Request Type</h6>
-            <small class="text-muted">{{ process.request_type }}</small>
+      <form method='POST'class="row g-3" name='rmsform'>
+        {%csrf_token%}
+
+        <!--RMS GENERAL INFORMATION FORM-->
+      <div class="card col-12"  id="mainCard">
+        <div class="card-body">
+              <h5 class="card-title">SECTION I: General Information</h5>
+          
+                 <div class="col-md-12">
+
+            {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
+            {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                  {{form.request_type|as_crispy_field}}
+                </div>
+            <div class="row">
+                  <div class="col-md-3">
+            {% comment %} <label for="inputName5" class="form-label"> Last  Name</label>
+            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                  {{form.last|as_crispy_field}}
+                  </div>
+                  <div class="col-md-3">
+            {% comment %} <label for="inputName5" class="form-label"> First  Name</label>
+            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+                   {{form.first|as_crispy_field}}
+                  </div>
+                 <div class="col-md-3">
+            {% comment %} <label for="inputName5" class="form-label"> Middle  Name</label>
+            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+            {{form.middle|as_crispy_field}}
           </div>
+          <div class="col-md-3">
+            {% comment %} <label for="inputName5" class="form-label"> Salutation</label>
+            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+            {{form.salutation|as_crispy_field}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+
+            {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
+            {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+            {{form.user_type|as_crispy_field}}
+          </div>
+          <div class="col-md-3">
+
+            {% comment %} <label for="inputName5" class="form-label"> Last  Name</label> {% endcomment %}
+            {% comment %} <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+            {{form.temporary_staff|as_crispy_field}}
+          </div>
+
+          <div class="col-md-3">
+            {% comment %} <label for="inputName5" class="form-label">Est No.</label>
+            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+            {{form.est_no|as_crispy_field}}
+          </div>
+          <div class="col-md-3">
+            {% comment %} <label for="inputEmail5" class="form-label">Email</label>
+            <input type="email" class="form-control" id="inputEmail5"> {% endcomment %}
+            {{form.email|as_crispy_field}}
+          </div>
+        </div>
+        <div  class="row">
+          <div class="col-md-3">
+            {% comment %} <label for="inputName5" class="form-label">Mobile No.</label>
+            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+            {{form.mobile_no|as_crispy_field}}
+          </div>
+          <div class="col-md-3">
+            {% comment %} <label for="inputName5" class="form-label"> Company  Name</label>
+            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+            {{form.company_name|as_crispy_field}}
+          </div>
+          <div class="col-md-3">
+            {% comment %} <label for="inputName5" class="form-label"> Job Title</label>
+            <input type="text" class="form-control" id="inputName5"> {% endcomment %}
+            {{form.job_title|as_crispy_field}}
+          </div>
+          <div class="col-md-3">
+
+            {{form.department|as_crispy_field}}
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-3">
+           
+            {{form.station|as_crispy_field}}
+          </div>
+
+
+          <div class="col-md-3">
+            
+            {{form.section|as_crispy_field}}
+          </div>
+
+          <div class="col-md-3">
+           
+            {{form.area|as_crispy_field}}
+          </div>
+          <div class="col-md-3" >
+           
+            {{form.date|as_crispy_field}}
+            
+          </div>
+        </div>
+       
+     
+       
+
+          
+        </div>
+      </div>
+      
+        <hr>
+      
+        
+        <div class="card col-12">
+          <div class="card-body">
+            <h5 class="card-title">SECTION II: ACCESS & GROUP SELECTION</h5>
+          
+            <!-- Bordered Table -->
+            <table class="table table-responsive table-bordered ">
+             
+              <tbody>
+                <tr>
+                 
+                  <td>
+                    {% comment %} <label for="inputZip" class="form-label">Area</label>
+                    <input type="text" class="form-control" id="inputZip"> {% endcomment %}
+                    {{form.ICT|as_crispy_field}}
+                  </td>
+                  <td>{{form.FINANCE|as_crispy_field}}</td>
+                  <td> {{form.CUSTOMER_SERVICE|as_crispy_field}}</td>
+                 
+                  <td> {{form.MARKETING|as_crispy_field}}</td>
+                  <td> {{form.PARKS_AND_RESERVES|as_crispy_field}}</td>
+                  <td> {{form.REVENUE_PROTECTION_UNIT|as_crispy_field}}</td>
+                  <td> {{form.INTERNAL_AUDIT|as_crispy_field}}</td>
+                </tr>
+              
+              </tbody>
+            </table>
+          </fieldset>
+            <!-- End Bordered Table -->
+
+            
+          </div>
+        </div>
+        <div class="card col-12">
+          <div class="card-body">
+            <h5 class="card-title">SECTION III: USER ACCOUNT REQUEST</h5>
+            <p class='strong'>By signing below you acknowledge that you have read and understood the Revenue Management System Security Agreement
+              below.
+              </p>
+           
+            <div class="row">
+             
+              <div class="col-md-4">
+                
+                {{form.Full_Name|as_crispy_field}}
+              </div>
+              <div class="col-md-4">
+                
+                {{form.Signature|as_crispy_field}}
+              </div>
+              <div class="col-md-4">
+                
+                {{form.Date|as_crispy_field}}
+              </div>
+            </div>
          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Last</h6>
-            <small class="text-muted">{{ process.last }}</small>
           </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">First</h6>
-            <small class="text-muted">{{process.first}}</small>
+        </div>
+        <div class="card col-12">
+          <div class="card-body">
+            <h5 class="card-title">SECTION IV: Department Head AUTHORIZATION</h5>
+            <p class='strong'>By signing below you acknowledge that the person requesting Revenue Management System access has a legitimate “need to
+              know”
+              
+              </p>
+            <div class="row">
+              <div class="col-md-4">
+                
+                {{form.HOD_name|as_crispy_field}}
+              </div>
+              <div class="col-md-4">
+                
+                {{form.HOD_approve|as_crispy_field}}
+              </div>
+             
+              <div class="col-md-4" >
+                
+                {{form.HOD_email|as_crispy_field}}
+              </div>
+            </div>
+            <div class="row" id='hod_rejection_comments'>
+              <div class="col-md-12">
+                {{form.HOD_Remarks|as_crispy_field}}
+              </div>
+        </div>
           </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Middle</h6>
-            <small class="text-muted">{{process.middle}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">User Type</h6>
-            <small class="text-muted">{{process.user_type}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Temporary staff</h6>
-            <small class="text-muted">{{process.temporary_staff}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Est No</h6>
-            <small class="text-muted">{{process.est_no}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Email</h6>
-            <small class="text-muted">{{process.email}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Email</h6>
-            <small class="text-muted">{{process.email}}</small>
-          </div>
-          
-        </li>
-       
-        
-      </ul>
-
-      <ul class="list-group mb-3">
+        </div>
       
+        <div class="card col-12">
+          <div class="card-body">
+            <h5 class="card-title">SECTION IV: ICT AUTHORIZATION</h5>
+            <p class='strong'>By signing below you acknowledge that the person requesting Revenue Management System access has a legitimate “need to
+              know”
+              
+              </p>
+            <div class="row">
+              <div class="col-md-4">
+                
+                {{form.ICT_Authority_name|as_crispy_field}}
+              </div>
+              <div class="col-md-4" 
+              >
+              
+                {{form.ICT_Approve|as_crispy_field}}
+              </div>
+              
+              <div class="col-md-4">
+                
+                {{form.ICTAuthority_email|as_crispy_field}}
+              </div>
+            </div>
+            <div class="row" id='ict_rejection_comments'>
+                  <div class="col-md-12">
+                    {{form.ICT_Remarks|as_crispy_field}}
+                  </div>
+            </div>
+          </div>
+        </div>
        
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Mobile No</h6>
-            <small class="text-muted">{{process.mobile_no}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Company Name</h6>
-            <small class="text-muted">{{process.company_name}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Job Title</h6>
-            <small class="text-muted">{{process.job_title}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Department</h6>
-            <small class="text-muted">{{process.department}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Station</h6>
-            <small class="text-muted">{{process.station}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Section</h6>
-            <small class="text-muted">{{process.section}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Area</h6>
-            <small class="text-muted">{{process.area}}</small>
-          </div>
-          
-        </li>
-        <li class="list-group-item d-flex justify-content-between lh-condensed">
-          <div>
-            <h6 class="my-0">Date Submitted</h6>
-            <small class="text-muted">{{process.date}}</small>
-          </div>
-          
-        </li>
-       
+        {{ activation.management_form}}
+        <div class="col-12 d-flex justify-content-between text-center m-3 ">
+          <button type="reset" class="btn btn-secondary btn-color">Reset</button>
+          <button type="submit" name="_continue" class="btn btn-primary btn-color">Submit and go to next request</button>
+
+        </div>
         
-      </ul>
-    </div>  
-     {% endcomment %}
+      </form>
+      
+
+    
+    </div>
+  </div>
+<script>
+  function commentarea(){
+    const  hod_approve=document.getElementById('id_HOD_approve').value
+    const  ict_approve=document.getElementById('div_id_ICT_Approve').value
+    if(hod_approve=='true'){
+      const comments=document.getElementById('hod_rejection_comments').style.display='None'
+    }
+    if(ict_approve=='true'){
+      const comments=document.getElementById('ict_rejection_comments').style.display='None'
+    }
+  }
+
+</script>

@@ -24,7 +24,7 @@ class NewUserSunsystemFlow(Flow):
            
             CreateProcessView,
             form_class= NewUserSunsystemForm,
-            task_title="New user of HQS’s accounting system"
+            task_title="To be Filled by a New user of HQS’s accounting system"
 
         ).Permission(
             auto_create=True
@@ -67,13 +67,13 @@ class NewUserSunsystemFlow(Flow):
        
        
        
-        task_result_summary="Request is {{ process.Created|yesno:'Approved,Rejected' }} by IT Authority",
+        task_result_summary="User has been {{ process.Created|yesno:'Created,Rejected' }} by IT Authority",
         
     ).Assign(
         lambda act: User.objects.get(is_ICT_Authority=True)
         ).Next(this.system_verify)
     system_verify = (
-        flow.If(lambda activation: activation.process.IT_Approve)
+        flow.If(lambda activation: activation.process.Created)
         
 
        

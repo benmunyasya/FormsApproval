@@ -1,8 +1,0 @@
-{% extends 'task_base.html' %}
-
-{% block task_actions %}
-<form method="POST">
-  {% csrf_token %}
-  <button type="submit" name="_assign" class="btn">Assign</button>
-</form>
-{% endblock %}

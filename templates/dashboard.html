@@ -92,6 +92,7 @@
           <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
             <li class="dropdown-header">
               <h6>{{user.first_name}}    {{user.last_name}}</h6>
+              <span> {{user.email}}</span><br>
               <span>KWS {{user.department}}</span>
             </li>
             <li>
@@ -213,7 +214,7 @@
         <li class="nav-item">
           <a class="nav-link collapsed" href="{% url 'newusersunsystem:newusersunsystem_start'%}">
             <i class="bi bi-file-earmark-break-fill"></i>
-            <span>NEW USER SUNSYSTEM ACCESS </span><i class="bi bi-plus fw-bold"></i>
+            <span>NEW USER SUNSYSTEM</span><i class="bi bi-plus fw-bold"></i>
           </a>
         </li>
         <li class="nav-item">
@@ -230,5 +231,6 @@
 <script src="{% static '/assets/js/main.js' %}"></script>
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
 </body> 
   {% endblock content %}

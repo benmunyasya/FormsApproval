@@ -29,7 +29,7 @@
 </style>
 <main id="main" role="main" class="main">
   <div class="row">
-    <div class="pagetitle col-8">
+    <div class="pagetitle col-12">
       <h1>Start RMS account requisition</h1>
       <nav>
         <ol class="breadcrumb">
@@ -47,8 +47,8 @@
 
             <div class="card col-12" id="mainCard">
               <div class="card-body">
-                <h5 class="card-title ">REVENUE MANAGEMENT SYSTEM ACCOUNT REQUISITION FORM</h5>
-                <p class='strong'>NOTE: For instructions on completing this form; as well as, user requirements, please see down below.
+                <h5 class="card-title text-center">REVENUE MANAGEMENT SYSTEM ACCOUNT REQUISITION FORM</h5>
+                <p class='strong text-center'>NOTE: For instructions on completing this form; as well as, user requirements, please see down below.
 
                   </p>
                
@@ -136,33 +136,36 @@
                       {{form.department|as_crispy_field}}
                     </div>
                   </div>
+               
                   <div class="row">
-                    <div class="col-md-3">
+                    <div class="col-md-6">
+                      {% comment %} <label for="inputZip" class="form-label">Area</label>
+                      <input type="text" class="form-control" id="inputZip"> {% endcomment %}
+                      {{form.area|as_crispy_field}}
+                    </div>
+                    <div class="col-md-6">
                       {% comment %} <label for="inputName5" class="form-label"> Station</label>
                       <input type="text" class="form-control" id="inputName5"> {% endcomment %}
                       {{form.station|as_crispy_field}}
                     </div>
   
   
-                    <div class="col-md-3">
-                      {% comment %} <label for="inputCity" class="form-label">Section</label>
-                      <input type="text" class="form-control" id="inputCity"> {% endcomment %}
-                      {{form.section|as_crispy_field}}
-                    </div>
-  
-                    <div class="col-md-3">
-                      {% comment %} <label for="inputZip" class="form-label">Area</label>
-                      <input type="text" class="form-control" id="inputZip"> {% endcomment %}
-                      {{form.area|as_crispy_field}}
-                    </div>
-                    <div class="col-md-3" >
-                      {% comment %} <label for="inputZip" class="form-label">Date</label>
-                      <input type="text" class="form-control" id="inputZip"> {% endcomment %}
-                      {{form.date|as_crispy_field}}
-                      
-                    </div>
+                   
                   </div>
+                 <div class='row'>
+                  <div class="col-md-6">
+                    {% comment %} <label for="inputCity" class="form-label">Section</label>
+                    <input type="text" class="form-control" id="inputCity"> {% endcomment %}
+                    {{form.section|as_crispy_field}}
+                  </div>
+
                  
+                  <div class="col-md-6" >
+                   
+                    {{form.date|as_crispy_field}}
+                    
+                  </div>
+                 </div>
                   
                  
       
