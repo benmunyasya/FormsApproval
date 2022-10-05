@@ -16,7 +16,7 @@ from multiselectfield import MultiSelectField
 
 ACCESS_AND_MULTIPLE_GROUP_SELECTION_CHOICES=((('Systems Administrator','Senior Management')),(('Finance Mananger','Finance Excutive')))
 REQUEST_TYPE_CHOICES=(('New User Account', 'New User Account'), ('Modify Access Permission', 'Modify Access Permission'), ('Update Contact Information', 'Update Contact Information'))
-DEPARTMENTS=(('ICT', 'ICT'), ('Communication', 'Communication'), ('Finance', 'Finance'),('Community', 'Community'))
+DEPARTMENTS=(('ICT', 'ICT'),('Customer Service', 'Customer Service'), ('Finance', 'Finance'),('Parks & Reserves', 'Parks & Reserves'),('Marketing', 'Marketing'),('Internal Audit', 'Internal Audit'),('Revenue Protection Unit', 'Revenue Protection Unit'))
 EMAIL_REQUEST_TYPE_CHOICES=(('INDIVIDUAL', 'INDIVIDUAL'), ('EMAIL DISTRIBUTION LIST', 'EMAIL DISTRIBUTION LIST'))
 class RMSGeneralInformationProcess(Process):
     
@@ -37,7 +37,7 @@ class RMSGeneralInformationProcess(Process):
     company_name = models.CharField(max_length=30)
     job_title=models.CharField(max_length=30)
     department=models.CharField(max_length=30,choices=DEPARTMENTS)
-    station=models.CharField(max_length=100,choices=STATIONS)
+    station=MultiSelectField(max_length=100,choices=STATIONS)
     section=models.CharField(max_length=30)
     area=models.CharField(max_length=100,choices=CONSERVATION_AREAS)
     date = models.DateField()

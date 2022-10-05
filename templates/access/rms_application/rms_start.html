@@ -121,7 +121,7 @@
                       {{form.mobile_no|as_crispy_field}}
                     </div>
                     <div class="col-md-3">
-                      {% comment %} <label for="inputName5" class="form-label"> Company  Name</label>
+                      {% comment %} <label for="inputName5" class="form-label"> area  Name</label>
                       <input type="text" class="form-control" id="inputName5"> {% endcomment %}
                       {{form.company_name|as_crispy_field}}
                     </div>
@@ -138,12 +138,12 @@
                   </div>
                
                   <div class="row">
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       {% comment %} <label for="inputZip" class="form-label">Area</label>
                       <input type="text" class="form-control" id="inputZip"> {% endcomment %}
                       {{form.area|as_crispy_field}}
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-12">
                       {% comment %} <label for="inputName5" class="form-label"> Station</label>
                       <input type="text" class="form-control" id="inputName5"> {% endcomment %}
                       {{form.station|as_crispy_field}}
@@ -392,5 +392,38 @@
       
       
   }); 
+  
+  document.getElementById("id_area").oninput = function(){
+
+  var selected_area = document.getElementById("id_area").value;
+  const container = document.querySelector("#div_id_station");
+  const matches = container.querySelectorAll("div.form-check");
+  var i;
+  
+  
+   
+  if(selected_area == "MOUNTAIN CONSERVATION AREA"){
+   for(i=0;i<matches.length;i++)
+   matches[i].style.display='none';
+  }
+  matches[0].style.display='';
+  matches[1].style.display='';
+  matches[2].style.display='';
+}
+   ////     document.getElementById("game").innerHTML = 
+    ////    '<option>game xyz</option> <option>game xyz2</option>'
+   // }
+  //  else if(selected_area == "area - 2"){
+      //  document.getElementById("game").innerHTML = 
+     //   '<option>game abc</option> <option>game abc2</option>'
+   // }
+  //  else if(selected_area == "area - 3"){
+   //     document.getElementById("game").innerHTML = 
+     //   '<option>game pqr</option> <option>game pqr2</option>'
+   // } 
+    //else{
+      //  document.getElementById("id_area").innerHTML = ''
+   // }
+//}
 </script>
 {%endblock content%}
