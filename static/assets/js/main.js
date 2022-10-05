@@ -41,7 +41,115 @@
       select('body').classList.toggle('toggle-sidebar')
     })
   }
+  /*filter stations*/
+  const container = document.querySelector("#div_id_station");
+  container.style.margin='20px';
+  next_div=document.getElementById("div_id_station").lastElementChild;
+  next_div.classList.add('row')
+  const matches = container.querySelectorAll("div.form-check");
+  console.log(matches)
+  var i;
+  function clearStations(){
+    var i;
+    for(i=0;i<matches.length;i++){
+      matches[i].style.display='none';
+      
+     }
+
+  }
+  for(i=0;i<matches.length;i++){
+    matches[i].classList.add('col-6');
+    
+   }
+
   
+  window.onload=document.getElementById("id_area").oninput=function filterStations(){
+
+  var selected_area = document.getElementById("id_area").value;
+ 
+ 
+  if(selected_area == "MOUNTAIN CONSERVATION AREA"){
+    clearStations()
+    matches[0].style.display='';
+    matches[1].style.display='';
+    matches[2].style.display='';
+   
+  }
+  if(selected_area == "SOUTHERN CONSERVATION AREA"){
+     clearStations()
+     matches[3].style.display='';
+     matches[4].style.display='';
+     matches[5].style.display='';
+     matches[6].style.display='';
+     matches[7].style.display='';
+   }
+   if(selected_area == "CENTRAL-RIFT CONSERVATION AREA"){
+    clearStations()
+     matches[8].style.display='';
+     matches[9].style.display='';
+     matches[36].style.display='';
+    
+   }
+   if(selected_area == "TSAVOS(TSAVO CONSERVATION AREA)"){
+    clearStations()
+     matches[10].style.display='';
+     matches[11].style.display='';
+     matches[12].style.display='';
+    
+   }
+   if(selected_area == "COAST CONSERVATION AREA"){
+    clearStations()
+     matches[13].style.display='';
+     matches[14].style.display='';
+     matches[15].style.display='';
+     matches[16].style.display='';
+     matches[17].style.display='';
+     matches[18].style.display='';
+     matches[19].style.display='';
+     matches[20].style.display='';
+     matches[21].style.display='';
+     matches[22].style.display='';
+     
+    
+   }
+   if(selected_area == "EASTERN CONSERVATION AREA"){
+    clearStations()
+     matches[23].style.display='';
+    
+    
+   }
+   if(selected_area == "NORTHERN CONSERVATION AREA"){
+    clearStations()
+     matches[24].style.display='';
+     matches[25].style.display='';
+     matches[26].style.display='';
+    
+    
+   }
+   if(selected_area == "WESTERN CONSERVATION AREA"){
+    clearStations()
+     matches[27].style.display='';
+     matches[28].style.display='';
+     matches[29].style.display='';
+     matches[30].style.display='';
+     matches[31].style.display='';
+     matches[32].style.display='';
+     matches[33].style.display='';
+     matches[34].style.display='';
+     matches[35].style.display='';
+    
+    
+    
+   }
+   else if(selected_area == ""){
+    for(i=0;i<matches.length;i++){
+      matches[i].style.display='none';
+       }
+   }
+  }
+ 
+
+
   
 
   /**
