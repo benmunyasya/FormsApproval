@@ -1,6 +1,6 @@
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.decorators import method_decorator
-
+from django.shortcuts import render,redirect
 from viewflow import  flow, lock
 from viewflow.activation import STATUS
 from viewflow.base import Flow, this
@@ -16,7 +16,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import send_mail
 
-
+from .views import start_RMSGeneralInformationProcess
 
 
 class RMS_ApplicationFlow(Flow):
@@ -25,14 +25,14 @@ class RMS_ApplicationFlow(Flow):
     rms_start = (
         flow.Start(
            
-            CreateProcessView,
-              
-              
-            form_class=RMSForm,
+           start_RMSGeneralInformationProcess,
            
-         
+            
          task_title="General Infomation"
         ).Permission(
+           
+
+
             auto_create=True
         ).Next(this.approve_by_HOD)
     )
@@ -50,7 +50,7 @@ class RMS_ApplicationFlow(Flow):
        
         task_result_summary="Request is {{ process.HOD_approve|yesno:'Approved,Rejected' }} by HOD ",
     
-    
+        
        
      ).Assign(
          lambda act : User.objects.filter(is_Department_Head_Authority=True ,department=act.process.department).order_by('?')[0]

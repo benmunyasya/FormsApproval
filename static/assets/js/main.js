@@ -41,7 +41,7 @@
       select('body').classList.toggle('toggle-sidebar')
     })
   }
-  /*filter stations*/
+  /*filter stations
   const container = document.querySelector("#div_id_station");
   container.style.margin='20px';
   next_div=document.getElementById("div_id_station").lastElementChild;
@@ -63,7 +63,7 @@
    }
 
   
-  window.onload=document.getElementById("id_area").oninput=function filterStations(){
+  /*window.onload=document.getElementById("id_area").oninput=function filterStations(){
 
   var selected_area = document.getElementById("id_area").value;
  
@@ -146,7 +146,7 @@
       matches[i].style.display='none';
        }
    }
-  }
+  }*/
  
 
 

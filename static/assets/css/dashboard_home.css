@@ -1,12 +1,42 @@
 /* FontAwesome for working BootSnippet :> */
 
 @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css');
+#reportscard {
+    border-left:3px solid #007b5e ;
+    height: 200px;
+  }
+  
+#reportscard  .card-icon {
+    color:rgba(102, 118, 24, 0.8);
+    background:  #f6f6fe;
+  }
+  #reportscard  .card-icon2 {
+    color:#f6f6fe;
+    background:  #007b5e;
+  }
+  .recent-sales {
+    font-size: 14px;
+  }
+   .recent-sales .table thead {
+    background: rgb(218, 245, 214);
+  }
+   .recent-sales .table thead th {
+    border: 0;
+  }
+   .recent-sales .dataTable-top {
+    padding: 0 0 10px 0;
+  }
+   .recent-sales .dataTable-bottom {
+    padding: 10px 0 0 0;
+  }
 #team {
     background:white !important;
     margin-top: 0;
     padding-top: 0;
 }
-
+hr{
+    color:#108d6f;
+}
 .btn-primary:hover,
 .btn-primary:focus {
     background-color: #108d6f;

@@ -28,7 +28,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =True
+DEBUG =False
 ALLOWED_HOSTS = ['*','localhost','127.0.0.1','172.16.1.9','VIRTUAL.kws.local','172.16.4.160','192.168.173.1']
 #SESSION_COOKIE_SECURE=True
 #CSRF_COOKIE_SECURE=True
@@ -201,3 +201,10 @@ LOGGING = {
     "handlers": {"console": {"class": "logging.StreamHandler"}},
     "loggers": {"django_auth_ldap": {"level": "DEBUG", "handlers": ["console"]}},
 }
+EMAIL_HOST =  '172.16.1.4'
+EMAIL_PORT=25
+EMAIL_HOST_USER = 'bngovi@kws.go.ke'
+EMAIL_HOST_PASSWORD = 'k@m1k@z3'
+
+EMAIL_USE_TLS = True
+DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

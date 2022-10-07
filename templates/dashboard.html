@@ -129,14 +129,17 @@
     <ul class="sidebar-nav" id="sidebar-nav">
 
       <li class="nav-item">
-        <a class="nav-link collapsed" href="{% url 'dashboard' %}">
+        <a class="nav-link collapsed" href="{% url 'dashboard' %}">{%if user.is_ICT_Authority%}
+          <i class="bi bi-speedometer"></i><span>Dashboard</span>
+          {%else%}
           <i class="bi bi-house-door"></i><span> Home</span>
+          {%endif%}
         </a>
         
       </li>
       <li class="nav-item">
         <a class="nav-link collapsed" data-bs-target="#Submittedforms" data-bs-toggle="collapse" href="#" aria-controls="Submittedforms" aria-expanded="false" aria-label="Toggle navigation">
-          <i class="bi bi-file-earmark-diff-fill"></i><span>Your Submitted Forms</span><i class="bi bi-chevron-down ms-auto"></i>
+          <i class="bi bi-file-earmark-diff-fill"></i><span>Your Workflows</span><i class="bi bi-chevron-down ms-auto"></i>
         </a>
         <ul id="Submittedforms" class="nav-content collapse" data-bs-parent="#sidebar-nav">
           <li>
