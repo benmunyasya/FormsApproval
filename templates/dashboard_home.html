@@ -6,31 +6,60 @@
 {% block content%}
 {% include 'dashboard.html' %}
 {% block css %} 
-    <link href="{% static 'assets\css\dashboard_home.css' %}" rel="stylesheet" type="text/css">
+    
     <link href="{%   static 'assets\simple-datatables\style.css' %}" rel="stylesheet"> 
 {% endblock css %} 
 <main id="main" class="main">
-    
-    <div class="row">
-        <div class="pagetitle col-12">
-          <h1 class="text-center text-muted">{% if user.is_ICT_Authority%}System Dashboard{%else%}Home{%endif%}</h1>
-         
-        </div><!-- End Page Title -->
+  <div class="row">
+    <div class="pagetitle col-12">
+      <h1>{% if user.is_ICT_Authority%} Dashboard{%else%}Home{%endif%}</h1>
+      <nav>
+        <ol class="breadcrumb">
+          <li class="breadcrumb-item">{% if user.is_ICT_Authority%} Dashboard{%else%}Home{%endif%}</li>
         
-      </div>
+        </ol>
+      </nav> 
+    </div><!-- End Page Title -->
+    
+  </div>
+    
 
    <link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
       <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
       
       {% if user.is_ICT_Authority %}
-      <div class="container">
-        <div class="row" >  
+      <div class="row">
+        
+          <div class="col-xxl-4 col-md-4">
+            <div class="card info-card " id='reportscard'>
+
+              <div class="card-body">
+                <h5 class="card-title">Unfinished Workflows</h5>
+                <hr>
+
+                <div class="d-flex align-items-center">
+                  <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
+                    <i class="fas fa-chart-area"></i>
+                  </div>
+                  <div class="ps-3">
+                   
+                      <h6 class="text-info text-center  fw-bold">{{active_workflows_count}}</h6>
+                    
+                    
+                    <span class="text-dark small pt-1 text-muted">View the details of the workflows that have <b>NOT</b> reached END stage in the selected workflow</span> <span class="text-muted small pt-2 ps-1"></span>
+
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div><!-- End  Card -->
             <div class="col-xxl-4 col-md-4">
                 <div class="card info-card " id='reportscard'>
     
                   <div class="card-body">
-                    <h5 class="card-title">Completed Requests Report </h5>
+                    <h5 class="card-title">Completed Workflows  </h5>
                     <hr>
     
                     <div class="d-flex align-items-center">
@@ -39,7 +68,7 @@
                       </div>
                       <div class="ps-3">
                        
-                          <h6 class="text-info text-center  fw-bold">12</h6>
+                          <h6 class="text-info text-center  fw-bold">{{finished_workflows_count}}</h6>
                         
                         
                         <span class="text-dark small pt-1 text-muted">View the details of the workflows that have reached END stage in the selected workflow</span> <span class="text-muted small pt-2 ps-1"></span>
@@ -54,7 +83,7 @@
                 <div class="card info-card " id='reportscard'>
     
                   <div class="card-body">
-                    <h5 class="card-title">Current Status Report </h5>
+                    <h5 class="card-title">Pending HOD Approval </h5>
                     <hr>
     
                     <div class="d-flex align-items-center">
@@ -62,8 +91,8 @@
                         <i class="fas fa-chart-area"></i>
                       </div>
                       <div class="ps-3">
-                        <h6 class="text-info text-center fw-bold">7</h6>
-                        <span class="text-dark small pt-1 text-muted">Select a workflow and view the status all requests</span> <span class="text-muted small pt-2 ps-1"></span>
+                        <h6 class="text-info text-center fw-bold">{{pending_hod_approval_count}}</h6>
+                        <span class="text-dark small pt-1 text-muted">View the Workflows that have not yet being approved by respective hods</span> <span class="text-muted small pt-2 ps-1"></span>
     
                       </div>
                     </div>
@@ -71,47 +100,152 @@
     
                 </div>
             </div><!-- End  Card -->
-            <div class="col-xxl-4 col-md-4">
-                <div class="card info-card " id='reportscard'>
-    
-                  <div class="card-body">
-                    <h5 class="card-title">Pending requests Report </h5>
-                    <hr>
-    
-                    <div class="d-flex align-items-center">
-                      <div class="card-icon rounded-circle d-flex align-items-center justify-content-center">
-                        <i class="fas fa-chart-area"></i>
-                      </div>
-                      <div class="ps-3">
-                        <h6 class="text-info text-center fw-bold">10</h6>
-                        <span class="text-dark small pt-1 text-muted">
-                           </span> <span class="text-muted small pt-2 ps-1">View a report of pending requests and where they are stuck at ,with whom and for how long.</span>
-                              
-                      </div>
-                    </div>
-                  </div>
-    
+            <div class="col-xxl-6 col-md-6">
+              <div class="card">
+               
+            
+                <div class="card-body pb-0">
+                  <h5 class="card-title">Pending HOD Approval <span>|All</span></h5>
+            
+                  <div id="trafficChart" style="min-height: 250px;" class="echart"></div>
+            
+                  <script>
+                    var RMS=20;
+                    var SUN=30;
+                    var EMAIL=50;
+                    document.addEventListener("DOMContentLoaded", () => {
+                      echarts.init(document.querySelector("#trafficChart")).setOption({
+                        tooltip: {
+                          trigger: 'item'
+                        },
+                        legend: {
+                          top: '5%',
+                          left: 'center'
+                        },
+                        series: [{
+                          name: 'View',
+                          type: 'pie',
+                         
+                          radius: ['50%'],
+                          avoidLabelOverlap: false,
+                          label: {
+                            show: false,
+                            position: 'center'
+                          },
+                         
+                          emphasis: {
+                            scaleSize: 20,
+                            label: {
+                              show: true,
+                              fontSize: '12',
+                              fontWeight: 'bold'
+                            }
+                          },
+                          labelLine: {
+                            show: false
+                          },
+                          data: [{
+                            value: RMS,
+                            name: 'RMS ACCOUNT REQUISITION',
+                            itemStyle:{color:'lightseagreen'}
+                          },
+                          
+                         
+                         
+                          {
+                            value:SUN,
+                            name: 'NEW USER SUNSYSTEM',
+                            itemStyle:{color:'rgba(102, 118, 24, 0.8)'}
+                          },
+                          {
+                            value:EMAIL,
+                            name: 'EMAIL SERVICE REQUEST',
+                            itemStyle:{color:'#51678f'}
+                          }
+                        ]
+                        }]
+                      });
+                    });
+                  </script>
+            
                 </div>
-            </div><!-- End  Card -->
-        </div>
+              </div><!-- End Website Traffic -->
+            </div>
+             <div class="col-xxl-6 col-md-6">
+              <div class="card">
+                
+            
+                <div class="card-body pb-0">
+                  <h5 class="card-title">Active Workflows<span>|All</span></h5>
+            
+                  <div id="trafficChart1" style="min-height: 250px;" class="echart"></div>
+            
+                  <script>
+                    var RMS=20;
+                    var SUN=30;
+                    var EMAIL=50;
+                    document.addEventListener("DOMContentLoaded", () => {
+                      echarts.init(document.querySelector("#trafficChart1")).setOption({
+                        tooltip: {
+                          trigger: 'item'
+                        },
+                        legend: {
+                          top: '5%',
+                          left: 'center'
+                        },
+                        series: [{
+                          name: 'Access From',
+                          type: 'pie',
+                          radius: ['20%', '40%'],
+                          avoidLabelOverlap: false,
+                          label: {
+                            show:false,
+                            position: 'center'
+                          },
+                          emphasis: {
+                            label: {
+                              show: true,
+                              fontSize: '12',
+                              fontWeight: 'bold'
+                            }
+                          },
+                          labelLine: {
+                            show: false
+                          },
+                          data: [{
+                              value: RMS,
+                              name: 'RMS ACCOUNT REQUISITION'
+                            },
+                            
+                           
+                           
+                            {
+                              value:SUN,
+                              name: 'NEW USER SUNSYSTEM'
+                            },
+                            {
+                              value:EMAIL,
+                              name: 'EMAIL SERVICE REQUEST',
+                              itemStyle:{color:'rgba(102, 118, 24, 0.8)'}
+                            }
+                          ]
+                        }]
+                      });
+                    });
+                  </script>
+            
+                </div>
+              </div><!-- End Website Traffic -->
+            
+            </div>
+       
       </div>
       
-        <div class="container">
+      
         <div class="row">
             <div class="card recent-sales">
 
-                <div class="filter">
-                    <a class="icon" href="#" data-bs-toggle="dropdown"><i class="bi bi-three-dots"></i></a>
-                    <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                      <li class="dropdown-header text-start">
-                        <h6>Filter</h6>
-                      </li>
-  
-                      <li><a class="dropdown-item" href="#">Today</a></li>
-                      <li><a class="dropdown-item" href="#">This Month</a></li>
-                      <li><a class="dropdown-item" href="#">This Year</a></li>
-                    </ul>
-                </div>
+             
   
                 <div class="card-body">
                     <h5 class="card-title">Active Workflows<span>| All</span></h5>
@@ -123,35 +257,44 @@
                          
                           <th scope="col" >#</th>
                           <th scope="col">Workflow Name</th>
-                         
+                          <th scope="col">Requestor</th>
+                          <th scope="col">When Created</th>
                           <th scope="col">Workflow Description</th>
-                          <th scope="col">Current Assignee</th>
+                          <th scope="col">Current Assignee </th>
+                          <th scope="col">When Assigned</th>
                           <th scope="col">Status</th>
                          
                           
                         </tr>
                       </thead>
                       <tbody>
-                        
+                     {% for workflow in active_workflows%}   
                         <tr>
                           <td>
-                            1                
+                           {{forloop.counter}}              
                           </td>
-                          <td> RMS Account Requisition </td>
+                          <td> {{workflow.flow_class}} </td>
+                          <td> {{workflow.created_by.first_name}}     {{workflow.created_by.last_name}}</td>
+                          <td> {{workflow.created}}     </td>
                          
                         
                            <td>
-                    Request RMS access
+                           
+                   {{workflow.summary}}
                           </td> 
-  
+                   
                           <td>
-                          kotieno
+                          {{workflow.active_tasks.first.owner.first_name}}   {{workflow.active_tasks.first.owner.last_name}}
                           </td>
+                          <td>
+                            {{workflow.active_tasks.first.assigned}}
+                            </td>
                           <td >
-                           <span class="badge badge-info">Pending HOD Review</span>
+
+                           <span class="badge badge-info">Pending {{workflow.active_tasks.first.flow_task}}</span>
                            </td>
                         </tr>
-                       
+                       {% endfor %}
                        
                       </tbody>
                     </table>
@@ -164,7 +307,7 @@
          
                
         </div><!-- End actives --> 
-      </div>
+     
         </div>
       {% endif %}
       <!-- WORKFLOW-->
@@ -312,5 +455,10 @@
     </section>
 
   </main><!-- End #main -->
-
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script src="{% static '\assets\apexcharts\apexcharts.min.js' %}"></script>
+ 
+  <script src="{% static '\assets\chart.js\chart.min.js' %}"></script>
+  <script src="{% static '\assets\echarts\echarts.min.js' %}"></script>
+  <script src="{% static '\assets\js\main.js' %}"></script>
 {%endblock content%}

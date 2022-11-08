@@ -59,6 +59,7 @@
                         
                         <th scope="col">Finished on</th>
                         <th scope="col">Completely Approved</th>
+                        <th scope="col">Actions</th>
                        
                         
                       </tr>
@@ -67,9 +68,7 @@
                       {% for process in process_list %}
                       {% if process.created_by == request.user or user.is_Department_Head_Authority or user.is_ICT_Authority %}
                       <tr>
-                        <td>
-                          <a href="{% flowurl process 'detail' %}">{{forloop.counter }}-View Details</a>                        
-                        </td>
+                       <td>{{forloop.counter }}</td> 
                         <td> {{process}} </td>
                        
                       
@@ -83,6 +82,9 @@
 
                         <td>
                           {{ process.fully_approved}}
+                        </td>
+                        <td>
+                          <a href="{% flowurl process 'detail' %}"><span><i class="bi bi-eye-fill"></i></span>Workflow Progress</a>                        
                         </td>
                        
                       </tr>

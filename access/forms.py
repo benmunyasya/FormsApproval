@@ -23,11 +23,6 @@ class RMSForm(forms.ModelForm):
             'temporary_staff':forms.RadioSelect(),
             'REVENUE_PROTECTION_UNIT':forms.RadioSelect(),
             'INTERNAL_AUDIT':forms.RadioSelect(),
-           
-           
-           
-
-            
         }
         
 

@@ -1,3 +1,5 @@
+
+from urllib import request
 from django.http import HttpResponse, HttpResponseRedirect
 from django.utils.decorators import method_decorator
 from django.shortcuts import render,redirect
@@ -16,7 +18,7 @@ from django.contrib.auth.decorators import login_required
 from django.conf import settings
 from django.core.mail import send_mail
 
-from .views import start_RMSGeneralInformationProcess
+from .views import start_RMSGeneralInformationProcess,HodApprovalView
 
 
 class RMS_ApplicationFlow(Flow):
@@ -25,39 +27,47 @@ class RMS_ApplicationFlow(Flow):
     rms_start = (
         flow.Start(
            
-           start_RMSGeneralInformationProcess,
-           
+            CreateProcessView,
             
+            form_class=RMSForm,
+  initial={
+      
+        #'first':super(CreateView),
+        # "Full_Name":lambda act: act.request.user.first_na''me + act.request.user.last_name,
+        #  "Signature":lambda act: act.request.user.email,
+       
+    },
          task_title="General Infomation"
         ).Permission(
-           
-
-
-            auto_create=True
+         auto_create=True
         ).Next(this.approve_by_HOD)
     )
     
     
 
     approve_by_HOD = flow.View(
+       
+      
         UpdateProcessView,
         task_title="Department Head AUTHORIZATION",
-        form_class=RMSForm,
-        
-       
-       
-     
-       
-        task_result_summary="Request is {{ process.HOD_approve|yesno:'Approved,Rejected' }} by HOD ",
     
-        
        
-     ).Assign(
-         lambda act : User.objects.filter(is_Department_Head_Authority=True ,department=act.process.department).order_by('?')[0]
-    ).Next(this.confirmed) 
-  
-    
+       
+         form_class=RMSForm,
+       initial={
+        "HOD_name" : "Kennedy Otieno",
+        "HOD_email" : "kotieno@kws.go.ke",
+       
+    },
 
+        task_result_summary="Request is {{ process.HOD_approve|yesno:'Approved,Rejected' }} by HOD ",
+  
+     ).Permission(auto_create=True
+     ).Next(this.confirmed) 
+  
+     
+     
+   
     confirmed = (
        
         flow.If(lambda activation: activation.process.HOD_approve)
@@ -68,7 +78,16 @@ class RMS_ApplicationFlow(Flow):
         UpdateProcessView,
        # ICT_Authority_name = forms.CharField(widget=forms.TextInput(attrs={'readonly':'True'}))
         task_title="ICT APPROVING AUTHORITY/DATA OWNER",
+        
         form_class=RMSForm,
+        initial={
+        "ICT_Authority_name" : "Bernard Omware",
+        "ICTAuthority_email" : "bernard@kws.go.ke",
+       
+    },
+         
+        
+
        # success_url = '/request_form/tasks',
        
        # fields=['ICT_Authority_name', 'ICT_Approve','ICTAuthority_email'],

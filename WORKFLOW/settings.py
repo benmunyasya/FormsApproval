@@ -10,9 +10,11 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/4.0/ref/settings/
 """
 
+from asyncio.sslproto import SSLProtocol
 from pathlib import Path
 import os
 import mimetypes
+from smtplib import SMTP_SSL
 mimetypes.add_type("text/css", ".css", True)
 import ldap
 from django_auth_ldap.config import LDAPSearch,logging
@@ -28,8 +30,8 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.environ['SECRET_KEY']
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG =False
-ALLOWED_HOSTS = ['*','localhost','127.0.0.1','172.16.1.9','VIRTUAL.kws.local','172.16.4.160','192.168.173.1']
+DEBUG =True
+ALLOWED_HOSTS = ['*','localhost','127.0.0.1','VIRTUAL.kws.local','172.16.4.160','192.168.173.1']
 #SESSION_COOKIE_SECURE=True
 #CSRF_COOKIE_SECURE=True
 
@@ -45,6 +47,7 @@ INSTALLED_APPS = [
     'accounts',
     'access',
     'core',
+     'blacklist',
     'email_form',
     'viewflow',
     'crispy_forms',
@@ -64,6 +67,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+     'blacklist.middleware.BlacklistMiddleware',
 ]
 
 ROOT_URLCONF = 'WORKFLOW.urls'
@@ -96,7 +100,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'wsgi_windows.wsgi.application'
+WSGI_APPLICATION = 'WORKFLOW.wsgi.application'
 
 
 DATABASES = {
@@ -201,10 +205,14 @@ LOGGING = {
     "handlers": {"console": {"class": "logging.StreamHandler"}},
     "loggers": {"django_auth_ldap": {"level": "DEBUG", "handlers": ["console"]}},
 }
-EMAIL_HOST =  '172.16.1.4'
-EMAIL_PORT=25
-EMAIL_HOST_USER = 'bngovi@kws.go.ke'
-EMAIL_HOST_PASSWORD = 'k@m1k@z3'
 
-EMAIL_USE_TLS = True
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'mail.kws.org'
+EMAIL_PORT=587
+EMAIL_HOST_USER = 'kws\ithelpdesk'
+EMAIL_HOST_PASSWORD = 'Helpdesk321@pop'
+
+
+EMAIL_USE_TLS= True
+
 DEFAULT_FROM_EMAIL = EMAIL_HOST_USER

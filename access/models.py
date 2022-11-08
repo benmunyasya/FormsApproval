@@ -40,7 +40,7 @@ class RMSGeneralInformationProcess(Process):
     station=MultiSelectField(max_length=100,choices=STATIONS)
     section=models.CharField(max_length=30)
     area=models.CharField(max_length=100,choices=CONSERVATION_AREAS)
-    date = models.DateField()
+    date = models.DateField(null=True)
     #access  groups
 
     ICT= MultiSelectField(null=True,blank=True,choices=(('Systems Administrator', 'Systems Administrator'), ('Senior Management', 'Senior Management')),max_length=50)
@@ -56,7 +56,7 @@ class RMSGeneralInformationProcess(Process):
     ## USER ACCOUNT REQUEST
     Full_Name=models.CharField(max_length=100)
     Signature=models.EmailField(help_text='Enter Your email to digitally sign . i.e ben@kws.go.ke')
-    Date = models.DateField()
+    Date = models.DateField(null=True)
     #ict verification
     ICT_Authority_name = models.CharField(max_length=30,null=True,blank=True)
     ICT_Approve=models.BooleanField(default=False,null=True,blank=True)

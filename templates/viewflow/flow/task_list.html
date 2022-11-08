@@ -42,14 +42,14 @@
                     <thead>
                       <tr>
                        
-                        <th scope="col">Request No</th>
+                        <th scope="col">Task No</th>
                    
                     <th scope="col">Form</th>
                    
                         <th scope="col">Submitted On</th>
                         <th scope="col">Request From</th>
                         <th scope="col">Description</th>
-                       
+                       <th scope="col">Actions</th>
                         
                       </tr>
                     </thead>
@@ -57,14 +57,15 @@
                       {% for task in task_list %}
                         {% flowurl task user=request.user as task_url %}
                         <tr>
-                          <td>
-                            {% if task_url %}<a href="{{task_url}}">{{forloop.counter}}   View Details</a>{% else %}{{ task.process.pk }}/{{ task.pk }}{% endif %}
-                          </td>
-                          
+                          <td>{{forloop.counter}}  </td>
                           <td>{{ task.process }}</td>
                           <td>{{ task.created }}</td>
-                          <td>{{ task.process.created_by }}</td>
+                          <td>{{ task.process.created_by.first_name  }}    {{task.process.created_by.last_name}}({{task.process.created_by.email}})</td>
                           <td>{{ task.summary|default:task.flow_task }}</td>
+                          <td>
+                            {% if task_url %}<a href="{{task_url}}" ><span><i class="bi bi-eye-fill"></i></span>Complete Task</a>{% else %}{{ task.process.pk }}/{{ task.pk }}{% endif %}
+                          </td>
+                          
                          
                         </tr>
                         {% empty %}

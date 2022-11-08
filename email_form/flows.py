@@ -70,7 +70,7 @@ class EmailRequestFlow(Flow):
         task_result_summary="Request is {{ process.IT_Approve|yesno:'Approved,Rejected' }} by IT Authority",
         
     ).Assign(
-        lambda act: User.objects.get(is_ICT_Authority=True)
+        lambda act: User.objects.get(is_ICT_Authority=True,username='munyasya',)
         ).Next(this.system_verify)
     system_verify = (
         flow.If(lambda activation: activation.process.IT_Approve)
